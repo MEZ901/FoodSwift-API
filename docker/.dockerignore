@@ -1,0 +1,11 @@
+# Exclude development-specific files and directories
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Exclude version control files
+.git
+.gitignore
+
+# Exclude editor-specific files
+.vscode
