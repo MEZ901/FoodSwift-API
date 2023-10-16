@@ -1,10 +1,8 @@
 const app = require("./src/frameworks/express/app");
-const config = require("./src/frameworks/config");
+const { PORT } = require("./src/frameworks/config/environment");
 
-const port = config.PORT || 8080;
-
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`----------------------------------------------`);
-  console.log(`🚀 Server running on http://localhost:${port}/`);
+  console.log(`🚀 Server running on http://localhost:${PORT}/`);
   console.log(`----------------------------------------------`);
 });

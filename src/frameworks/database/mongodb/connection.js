@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const config = require("../../config");
+const logger = require("../../config/winston");
+const environment = require("../../config/environment");
 
 let isConnected = false;
 
@@ -7,20 +8,20 @@ const connectToDB = async () => {
   mongoose.set("strictQuery", true);
 
   if (isConnected) {
-    console.log("=> using existing database connection...");
+    logger.info("using existing database connection.");
     return Promise.resolve();
   }
 
-  console.log("=> using new database connection...");
+  logger.info("using new database connection.");
 
   try {
-    await mongoose.connect(config.mongo.MONGO_URI, {
-      dbName: config.mongo.MONGO_DB_NAME,
+    await mongoose.connect(environment.mongo.MONGO_URI, {
+      dbName: environment.mongo.MONGO_DB_NAME,
     });
     isConnected = true;
-    console.log("=> connection to database established successfully.");
+    logger.info("connection to database established successfully.");
   } catch (error) {
-    console.log("=> error while connecting to database: ", error);
+    logger.error(`error while connecting to database: ${error}`);
   }
 };
 
