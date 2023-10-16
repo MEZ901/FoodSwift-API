@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "This is the backend API for MarhabaDine, a restaurant delivery application. It powers the core functionality of order processing, user management, and delivery tracking.",
   "main": "index.js",
+  "repository": "git@github.com:MEZ901/MarhabaDine-API.git",
+  "author": "MEZ901 <issammez44@gmail.com>",
+  "license": "ISC",
   "scripts": {
     "start": "node .",
     "dev": "nodemon ."
   },
-  "repository": "git@github.com:MEZ901/MarhabaDine-API.git",
-  "author": "MEZ901 <issammez44@gmail.com>",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.6.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

@@ -1,11 +1,10 @@
-const app = require("express")();
+const app = require("./src/frameworks/express/app");
+const config = require("./src/frameworks/config");
 
-app.get("/", (req, res) => {
-  res.json({ message: "Hello World!" });
-});
-
-const port = process.env.PORT || 8080;
+const port = config.PORT || 8080;
 
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}/`);
+  console.log(`----------------------------------------------`);
+  console.log(`🚀 Server running on http://localhost:${port}/`);
+  console.log(`----------------------------------------------`);
 });
