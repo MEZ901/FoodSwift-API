@@ -1,6 +1,6 @@
 const { hashPassword } = require("../../../../utils/helpers");
 const logger = require("../../../config/winston");
-const User = require("../models/user");
+const User = require("../models/User");
 const { faker } = require("@faker-js/faker");
 
 module.exports = async (amount = 10) => {
