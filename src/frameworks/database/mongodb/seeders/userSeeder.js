@@ -11,6 +11,7 @@ module.exports = async (amount = 10) => {
         email: "admin@admin.com",
         password: await hashPassword("admin"),
         role: "manager",
+        isVerified: true,
       },
     ];
     for (let i = 0; i < amount; i++) {
@@ -22,10 +23,11 @@ module.exports = async (amount = 10) => {
         phoneNumber: faker.phone.number(),
         address: faker.location.streetAddress(),
         role: faker.helpers.arrayElement(["customer", "delivery"]),
+        isVerified: true,
       });
     }
     await User.insertMany(users);
-    logger.info("User seeder done!");
+    logger.info(`${amount} users have been successfully seeded.`);
   } catch (error) {
     logger.error(error);
   }

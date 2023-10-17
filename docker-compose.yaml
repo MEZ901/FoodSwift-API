@@ -1,5 +1,13 @@
 version: "3.8"
 services:
+  mongodb:
+    container_name: marhabadine_db
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
   api:
     container_name: marhabadine_api
     build:
@@ -11,3 +19,8 @@ services:
     volumes:
       - .:/app
       - ./app/node_modules
+    depends_on:
+      - mongodb
+
+volumes:
+  mongodb-data: {}

@@ -1,4 +1,4 @@
-const userSeeder = require("./user.seeder");
+const userSeeder = require("./userSeeder");
 
 (async () => {
   await userSeeder();
