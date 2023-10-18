@@ -1,7 +1,7 @@
 const express = require("express");
-const DeliveryController = require("../../../../../adapters/controllers/users/DeliveryController");
 const deliveryRoutes = express.Router();
+const DeliveryControllerImpl = require("../../../../../adapters/controllers/users/DeliveryControllerImpl");
 
-deliveryRoutes.get("/seed", DeliveryController.seed);
+deliveryRoutes.get("/seed", DeliveryControllerImpl.seed);
 
 module.exports = deliveryRoutes;

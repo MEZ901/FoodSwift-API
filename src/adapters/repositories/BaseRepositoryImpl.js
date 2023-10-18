@@ -2,6 +2,7 @@ const BaseRepository = require("../../application/interfaces/repositories/BaseRe
 
 class BaseRepositoryImpl extends BaseRepository {
   constructor(model) {
+    super();
     this.model = model;
   }
 

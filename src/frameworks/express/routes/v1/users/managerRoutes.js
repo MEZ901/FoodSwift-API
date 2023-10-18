@@ -1,7 +1,7 @@
 const express = require("express");
-const ManagerController = require("../../../../../adapters/controllers/users/ManagerController");
 const managerRoutes = express.Router();
+const ManagerControllerImpl = require("../../../../../adapters/controllers/users/ManagerControllerImpl");
 
-managerRoutes.get("/seed", ManagerController.seed);
+managerRoutes.get("/seed", ManagerControllerImpl.seed);
 
 module.exports = managerRoutes;

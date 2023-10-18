@@ -1,4 +1,10 @@
-class DeliveryController {
+const DeliveryController = require("../../../application/interfaces/controllers/users/DeliveryController");
+
+class DeliveryControllerImpl extends DeliveryController {
+  constructor() {
+    super();
+  }
+
   static seed = async (req, res) => {
     const deliverySeeder = require("../../../frameworks/database/mongodb/seeders/deliverySeeder");
     const amount = req.query.amount;
@@ -22,4 +28,4 @@ class DeliveryController {
   };
 }
 
-module.exports = DeliveryController;
+module.exports = DeliveryControllerImpl;

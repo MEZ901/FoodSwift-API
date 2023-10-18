@@ -1,4 +1,10 @@
-class CustomerController {
+const CustomerController = require("../../../application/interfaces/controllers/users/CustomerController");
+
+class CustomerControllerImpl extends CustomerController {
+  constructor() {
+    super();
+  }
+
   static seed = async (req, res) => {
     const customerSeeder = require("../../../frameworks/database/mongodb/seeders/customerSeeder");
     const amount = req.query.amount;
@@ -22,4 +28,4 @@ class CustomerController {
   };
 }
 
-module.exports = CustomerController;
+module.exports = CustomerControllerImpl;
