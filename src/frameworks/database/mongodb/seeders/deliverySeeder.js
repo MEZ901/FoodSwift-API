@@ -5,29 +5,21 @@ const { faker } = require("@faker-js/faker");
 
 module.exports = async (amount = 10) => {
   try {
-    const users = [
-      {
-        name: "Admin",
-        email: "admin@admin.com",
-        password: await hashPassword("admin"),
-        role: "manager",
-        isVerified: true,
-      },
-    ];
+    const deliveries = [];
     for (let i = 0; i < amount; i++) {
-      users.push({
+      deliveries.push({
         name: faker.person.fullName(),
         email: faker.internet.email(),
         password: await hashPassword("password"),
         image: faker.image.avatarLegacy(),
         phoneNumber: faker.phone.number(),
         address: faker.location.streetAddress(),
-        role: faker.helpers.arrayElement(["customer", "delivery"]),
+        role: "delivery",
         isVerified: true,
       });
     }
-    await User.insertMany(users);
-    logger.info(`${amount} users have been successfully seeded.`);
+    await User.insertMany(deliveries);
+    logger.info(`${amount} deliveries have been successfully seeded.`);
   } catch (error) {
     logger.error(error);
   }
