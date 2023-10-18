@@ -1,7 +1,7 @@
 const deliverySeeder = require("../../../frameworks/database/mongodb/seeders/deliverySeeder");
 
-class deliveryController {
-  seed = async (req, res) => {
+class DeliveryController {
+  static seed = async (req, res) => {
     const amount = req.query.amount;
     let message;
 
@@ -23,4 +23,4 @@ class deliveryController {
   };
 }
 
-module.exports = new deliveryController();
+module.exports = DeliveryController;

@@ -1,7 +1,7 @@
 const customerSeeder = require("../../../frameworks/database/mongodb/seeders/customerSeeder");
 
 class CustomerController {
-  seed = async (req, res) => {
+  static seed = async (req, res) => {
     const amount = req.query.amount;
     let message;
 
@@ -23,4 +23,4 @@ class CustomerController {
   };
 }
 
-module.exports = new CustomerController();
+module.exports = CustomerController;

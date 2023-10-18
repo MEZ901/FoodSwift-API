@@ -1,7 +1,7 @@
 const managerSeeder = require("../../../frameworks/database/mongodb/seeders/managerSeeder");
 
 class ManagerController {
-  seed = async (req, res) => {
+  static seed = async (req, res) => {
     try {
       await managerSeeder();
       res.status(200).json({ message: "Manager seeded successfully." });
@@ -11,4 +11,4 @@ class ManagerController {
   };
 }
 
-module.exports = new ManagerController();
+module.exports = ManagerController;
