@@ -1,7 +1,6 @@
-const customerSeeder = require("../../../frameworks/database/mongodb/seeders/customerSeeder");
-
 class CustomerController {
   static seed = async (req, res) => {
+    const customerSeeder = require("../../../frameworks/database/mongodb/seeders/customerSeeder");
     const amount = req.query.amount;
     let message;
 
@@ -11,11 +10,11 @@ class CustomerController {
     }
 
     try {
-      await customerSeeder(amount && parseInt(amount));
+      const customer = await customerSeeder(amount && parseInt(amount));
       message = amount
         ? `${amount} customers have been successfully seeded.`
         : "1 customer have been successfully seeded.";
-      res.status(200).json({ message });
+      res.status(200).json({ message, customer });
     } catch (error) {
       message = error.message;
       res.status(500).json({ message });

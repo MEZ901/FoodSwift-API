@@ -1,7 +1,6 @@
-const deliverySeeder = require("../../../frameworks/database/mongodb/seeders/deliverySeeder");
-
 class DeliveryController {
   static seed = async (req, res) => {
+    const deliverySeeder = require("../../../frameworks/database/mongodb/seeders/deliverySeeder");
     const amount = req.query.amount;
     let message;
 
@@ -11,11 +10,11 @@ class DeliveryController {
     }
 
     try {
-      await deliverySeeder(amount && parseInt(amount));
+      const delivery = await deliverySeeder(amount && parseInt(amount));
       message = amount
         ? `${amount} deliveries have been successfully seeded.`
         : "1 delivery have been successfully seeded.";
-      res.status(200).json({ message });
+      res.status(200).json({ message, delivery });
     } catch (error) {
       message = error.message;
       res.status(500).json({ message });

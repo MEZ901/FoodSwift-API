@@ -1,5 +1,7 @@
+const UserRepoistory = require("../../../../repositories/UserRepository");
 const { hashPassword } = require("../../../../utils/helpers");
 const logger = require("../../../config/winston");
+const Role = require("../models/Role");
 const User = require("../models/User");
 const { faker } = require("@faker-js/faker");
 
@@ -14,13 +16,13 @@ module.exports = async (amount = 1) => {
         image: faker.image.avatarLegacy(),
         phoneNumber: faker.phone.number(),
         address: faker.location.streetAddress(),
-        role: "customer",
+        roleName: "customer",
         isVerified: true,
       });
     }
-    await User.insertMany(customers);
-    logger.info(`${amount} customers have been successfully seeded.`);
+    const repository = new UserRepoistory(User, Role);
+    return await repository.createMany(customers);
   } catch (error) {
-    logger.error(error);
+    throw new Error(error);
   }
 };

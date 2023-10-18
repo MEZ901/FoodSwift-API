@@ -1,7 +1,10 @@
-const UserRepository = require("../../../repositories/users/UserRepository");
 const logger = require("../../../frameworks/config/winston");
 
 class UserController {
+  constructor(userRepository) {
+    this.userRepository = userRepository;
+  }
+
   static async getAllUsers(req, res) {
     try {
       const users = await UserRepository.getAll();

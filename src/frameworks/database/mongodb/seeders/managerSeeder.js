@@ -1,19 +1,21 @@
 const { hashPassword } = require("../../../../utils/helpers");
-const logger = require("../../../config/winston");
+const UserRepoistory = require("../../../../repositories/UserRepository");
+const Role = require("../models/Role");
 const User = require("../models/User");
 
 module.exports = async () => {
   try {
-    const manager = {
+    const managerCredentials = {
       name: "Admin",
       email: "admin@admin.com",
       password: await hashPassword("admin"),
-      role: "manager",
+      roleName: "manager",
       isVerified: true,
     };
-    await User.create(manager);
-    logger.info(`Manager has been successfully seeded.`);
+
+    const repository = new UserRepoistory(User, Role);
+    return await repository.create(managerCredentials);
   } catch (error) {
-    logger.error(error);
+    throw new Error(error);
   }
 };

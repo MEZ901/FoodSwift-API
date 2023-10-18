@@ -27,9 +27,9 @@ const userSchema = Schema({
     default: null,
   },
   role: {
-    type: String,
-    enum: ["customer", "delivery", "manager"],
-    default: "customer",
+    type: Schema.Types.ObjectId,
+    ref: "Role",
+    required: true,
   },
   isVerified: {
     type: Boolean,
