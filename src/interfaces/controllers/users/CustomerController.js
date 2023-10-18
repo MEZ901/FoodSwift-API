@@ -3,11 +3,22 @@ const customerSeeder = require("../../../frameworks/database/mongodb/seeders/cus
 class CustomerController {
   seed = async (req, res) => {
     const amount = req.query.amount;
+    let message;
+
+    if (amount && isNaN(amount)) {
+      message = "Amount must be a number.";
+      return res.status(400).json({ message });
+    }
+
     try {
       await customerSeeder(amount && parseInt(amount));
-      res.status(200).json({ message: "Customer seeded successfully." });
+      message = amount
+        ? `${amount} customers have been successfully seeded.`
+        : "1 customer have been successfully seeded.";
+      res.status(200).json({ message });
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      message = error.message;
+      res.status(500).json({ message });
     }
   };
 }
