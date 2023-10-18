@@ -3,7 +3,7 @@ const logger = require("../../../config/winston");
 const User = require("../models/User");
 const { faker } = require("@faker-js/faker");
 
-module.exports = async (amount = 10) => {
+module.exports = async (amount = 1) => {
   try {
     const deliveries = [];
     for (let i = 0; i < amount; i++) {
