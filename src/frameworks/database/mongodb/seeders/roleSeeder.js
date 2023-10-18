@@ -1,16 +1,23 @@
-const logger = require("../../../config/winston");
+const RoleRepository = require("../../../../repositories/RoleRepository");
 const Role = require("../models/Role");
+const logger = require("../../../config/winston");
 
-module.exports = async () => {
+(async () => {
   try {
-    const roles = [
-      { name: "manager" },
-      { name: "delivery" },
-      { name: "customer" },
-    ];
-    await Role.insertMany(roles);
-    logger.info(`Roles have been successfully seeded.`);
+    const repository = new RoleRepository(Role);
+    const existingRoles = await repository.find();
+
+    if (existingRoles.length === 0) {
+      const roles = [
+        { name: "manager" },
+        { name: "delivery" },
+        { name: "customer" },
+      ];
+      return await repository.createMany(roles);
+    } else {
+      logger.info("Roles collection already has data. Seeder skipped.");
+    }
   } catch (error) {
-    logger.error(error);
+    throw new Error(error);
   }
-};
+})();

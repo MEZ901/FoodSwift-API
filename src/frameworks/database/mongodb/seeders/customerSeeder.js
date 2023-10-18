@@ -1,6 +1,5 @@
 const UserRepoistory = require("../../../../repositories/UserRepository");
 const { hashPassword } = require("../../../../utils/helpers");
-const logger = require("../../../config/winston");
 const Role = require("../models/Role");
 const User = require("../models/User");
 const { faker } = require("@faker-js/faker");
