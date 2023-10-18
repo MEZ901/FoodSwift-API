@@ -1,4 +1,6 @@
-class BaseRepository {
+const BaseRepository = require("../../application/interfaces/repositories/BaseRepository");
+
+class BaseRepositoryImpl extends BaseRepository {
   constructor(model) {
     this.model = model;
   }
@@ -46,4 +48,4 @@ class BaseRepository {
   }
 }
 
-module.exports = BaseRepository;
+module.exports = BaseRepositoryImpl;

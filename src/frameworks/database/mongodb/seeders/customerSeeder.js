@@ -1,4 +1,4 @@
-const UserRepoistory = require("../../../../repositories/UserRepository");
+const UserRepoistory = require("../../../../adapters/repositories/UserRepository");
 const { hashPassword } = require("../../../../utils/helpers");
 const Role = require("../models/Role");
 const User = require("../models/User");

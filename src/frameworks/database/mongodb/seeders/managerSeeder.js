@@ -1,5 +1,5 @@
 const { hashPassword } = require("../../../../utils/helpers");
-const UserRepoistory = require("../../../../repositories/UserRepository");
+const UserRepoistory = require("../../../../adapters/repositories/UserRepository");
 const Role = require("../models/Role");
 const User = require("../models/User");
 

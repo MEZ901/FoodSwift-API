@@ -1,5 +1,5 @@
 const express = require("express");
-const ManagerController = require("../../../../../interfaces/controllers/users/ManagerController");
+const ManagerController = require("../../../../../adapters/controllers/users/ManagerController");
 const managerRoutes = express.Router();
 
 managerRoutes.get("/seed", ManagerController.seed);

@@ -1,6 +1,6 @@
-const BaseRepository = require("./BaseRepository");
+const BaseRepositoryImpl = require("./BaseRepositoryImpl");
 
-class UserRepoistory extends BaseRepository {
+class UserRepoistory extends BaseRepositoryImpl {
   constructor(User, Role) {
     super(User);
     this.roleModel = Role;

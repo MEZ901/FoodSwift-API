@@ -1,4 +1,4 @@
-const RoleRepository = require("../../../../repositories/RoleRepository");
+const RoleRepository = require("../../../../adapters/repositories/RoleRepository");
 const Role = require("../models/Role");
 const logger = require("../../../config/winston");
 
