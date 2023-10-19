@@ -8,8 +8,8 @@
   "license": "ISC",
   "scripts": {
     "start": "node .",
-    "dev": "nodemon -L .",
-    "seed:roles": "node ./src/frameworks/database/mongodb/seeders/roleSeeder.js"
+    "dev": "nodemon .",
+    "seed:roles": "node ./src/infrastructure/database/mongodb/seeders/roleSeeder.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

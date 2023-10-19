@@ -6,7 +6,7 @@ class DeliveryControllerImpl extends DeliveryController {
   }
 
   static seed = async (req, res) => {
-    const deliverySeeder = require("../../../frameworks/database/mongodb/seeders/deliverySeeder");
+    const deliverySeeder = require("../../../infrastructure/database/mongodb/seeders/deliverySeeder");
     const amount = req.query.amount;
     let message;
 

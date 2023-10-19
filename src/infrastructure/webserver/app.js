@@ -2,9 +2,9 @@
 const app = require("express")();
 const bodyParser = require("body-parser");
 
-// Required handlers
-const ErrorHandler = require("./handlers/ErrorHandler");
-const NotFoundHandler = require("./handlers/NotFoundHandler");
+// Required Middlewares
+const NotFoundMiddleware = require("./middlewares/NotFoundMiddleware");
+const ErrorMiddleware = require("./middlewares/ErrorMiddleware");
 
 // Required routes
 const v1Routes = require("./routes/v1");
@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 // Routes
 app.use("/api/v1", v1Routes);
 
-// Handlers
-app.use(NotFoundHandler);
-app.use(ErrorHandler);
+// Error Middlewares
+app.use(NotFoundMiddleware);
+app.use(ErrorMiddleware);
 
 module.exports = app;

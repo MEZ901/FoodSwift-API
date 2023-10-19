@@ -16,7 +16,7 @@ class ManagerControllerImpl extends ManagerController {
   async deleteManager(req, res) {}
 
   static seed = async (req, res) => {
-    const managerSeeder = require("../../../frameworks/database/mongodb/seeders/managerSeeder");
+    const managerSeeder = require("../../../infrastructure/database/mongodb/seeders/managerSeeder");
 
     try {
       const manager = await managerSeeder();

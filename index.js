@@ -1,5 +1,5 @@
-const app = require("./src/frameworks/express/app");
-const { PORT } = require("./src/frameworks/config/environment");
+const app = require("./src/infrastructure/webserver/app");
+const { PORT } = require("./src/infrastructure/config/environment");
 
 app.listen(PORT, () => {
   console.log(`----------------------------------------------`);

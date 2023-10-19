@@ -6,7 +6,7 @@ class CustomerControllerImpl extends CustomerController {
   }
 
   static seed = async (req, res) => {
-    const customerSeeder = require("../../../frameworks/database/mongodb/seeders/customerSeeder");
+    const customerSeeder = require("../../../infrastructure/database/mongodb/seeders/customerSeeder");
     const amount = req.query.amount;
     let message;
 
