@@ -1,32 +1,21 @@
 const ManagerController = require("../../../application/interfaces/controllers/users/ManagerController");
 
 class ManagerControllerImpl extends ManagerController {
-  constructor() {
+  constructor(managerServices) {
     super();
+    this.managerServices = managerServices;
   }
 
-  async createManager(req, res) {}
-
-  async getManagers(req, res) {}
-
-  async getAllManagers(req, res) {}
-
-  async updateManager(req, res) {}
-
-  async deleteManager(req, res) {}
-
-  static seed = async (req, res) => {
+  seed = async (req, res) => {
     const managerSeeder = require("../../../infrastructure/database/mongodb/seeders/managerSeeder");
+    const amount = req.query.amount;
 
-    try {
-      const manager = await managerSeeder();
-      res.status(200).json({
-        message: "Manager has been successfully seeded.",
-        manager,
-      });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
+    const { status, ...rest } = await this.managerServices.seedUsers(
+      amount,
+      managerSeeder
+    );
+
+    return res.status(status).json({ ...rest });
   };
 }
 

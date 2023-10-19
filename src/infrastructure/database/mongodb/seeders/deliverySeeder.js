@@ -1,6 +1,3 @@
-const UserRepoistory = require("../../../../adapters/repositories/UserRepository");
-const Role = require("../models/Role");
-const User = require("../models/User");
 const { hashPassword } = require("../../../../utils/helpers");
 const { faker } = require("@faker-js/faker");
 
@@ -21,8 +18,7 @@ module.exports = async (amount = 1) => {
       });
     }
 
-    const repository = new UserRepoistory(User, Role);
-    return await repository.createMany(deliveries);
+    return deliveries;
   } catch (error) {
     throw new Error(error);
   }

@@ -1,11 +1,8 @@
 const { hashPassword } = require("../../../../utils/helpers");
-const UserRepoistory = require("../../../../adapters/repositories/UserRepository");
-const Role = require("../models/Role");
-const User = require("../models/User");
 
 module.exports = async () => {
   try {
-    const managerCredentials = {
+    const manager = {
       name: "Admin",
       email: "admin@admin.com",
       password: await hashPassword("admin"),
@@ -13,8 +10,7 @@ module.exports = async () => {
       isVerified: true,
     };
 
-    const repository = new UserRepoistory(User, Role);
-    return await repository.create(managerCredentials);
+    return manager;
   } catch (error) {
     throw new Error(error);
   }

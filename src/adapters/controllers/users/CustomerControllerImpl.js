@@ -1,30 +1,21 @@
 const CustomerController = require("../../../application/interfaces/controllers/users/CustomerController");
 
 class CustomerControllerImpl extends CustomerController {
-  constructor() {
+  constructor(customerServices) {
     super();
+    this.customerServices = customerServices;
   }
 
-  static seed = async (req, res) => {
+  seed = async (req, res) => {
     const customerSeeder = require("../../../infrastructure/database/mongodb/seeders/customerSeeder");
     const amount = req.query.amount;
-    let message;
 
-    if (amount && isNaN(amount)) {
-      message = "Amount must be a number.";
-      return res.status(400).json({ message });
-    }
+    const { status, ...rest } = await this.customerServices.seedUsers(
+      amount,
+      customerSeeder
+    );
 
-    try {
-      const customer = await customerSeeder(amount && parseInt(amount));
-      message = amount
-        ? `${amount} customers have been successfully seeded.`
-        : "1 customer have been successfully seeded.";
-      res.status(200).json({ message, customer });
-    } catch (error) {
-      message = error.message;
-      res.status(500).json({ message });
-    }
+    return res.status(status).json({ ...rest });
   };
 }
 
