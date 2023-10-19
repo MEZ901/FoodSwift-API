@@ -1,11 +1,11 @@
 /**
  * @interface
  */
-class AuthServices {
+class AuthServicesInterface {
   constructor() {
-    if (this.constructor === AuthServices) {
+    if (this.constructor === AuthServicesInterface) {
       throw new Error(
-        "AuthServices is an interface and cannot be instantiated."
+        "AuthServicesInterface is an interface and cannot be instantiated."
       );
     }
   }
@@ -39,4 +39,4 @@ class AuthServices {
   }
 }
 
-module.exports = AuthServices;
+module.exports = AuthServicesInterface;

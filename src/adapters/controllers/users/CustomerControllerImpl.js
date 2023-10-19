@@ -1,6 +1,6 @@
-const CustomerController = require("../../../application/interfaces/controllers/users/CustomerController");
+const CustomerControllerInterface = require("../../../application/interfaces/controllers/users/CustomerControllerInterface");
 
-class CustomerControllerImpl extends CustomerController {
+class CustomerControllerImpl extends CustomerControllerInterface {
   constructor(customerServices) {
     super();
     this.customerServices = customerServices;

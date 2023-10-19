@@ -1,11 +1,11 @@
 /**
  * @interface
  */
-class ManagerController {
+class ManagerControllerInterface {
   constructor() {
-    if (this.constructor === ManagerController) {
+    if (this.constructor === ManagerControllerInterface) {
       throw new Error(
-        "ManagerController is an interface and cannot be instantiated."
+        "ManagerControllerInterface is an interface and cannot be instantiated."
       );
     }
   }
@@ -61,4 +61,4 @@ class ManagerController {
   }
 }
 
-module.exports = ManagerController;
+module.exports = ManagerControllerInterface;

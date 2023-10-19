@@ -1,6 +1,6 @@
-const BaseRepository = require("../../application/interfaces/repositories/BaseRepository");
+const BaseRepositoryInterface = require("../../application/interfaces/repositories/BaseRepositoryInterface");
 
-class BaseRepositoryImpl extends BaseRepository {
+class BaseRepositoryImpl extends BaseRepositoryInterface {
   constructor(model) {
     super();
     this.model = model;

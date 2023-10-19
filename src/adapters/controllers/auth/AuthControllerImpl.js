@@ -1,6 +1,6 @@
-const AuthController = require("../../../application/interfaces/controllers/auth/AuthController");
+const AuthControllerInterface = require("../../../application/interfaces/controllers/auth/AuthControllerInterface");
 
-class AuthControllerImpl extends AuthController {
+class AuthControllerImpl extends AuthControllerInterface {
   constructor() {
     super();
   }

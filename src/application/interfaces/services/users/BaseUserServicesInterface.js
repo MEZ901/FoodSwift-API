@@ -1,11 +1,11 @@
 /**
  * @interface
  */
-class BaseUserServices {
+class BaseUserServicesInterface {
   constructor() {
-    if (this.constructor === BaseUserServices) {
+    if (this.constructor === BaseUserServicesInterface) {
       throw new Error(
-        "BaseUserServices is an interface and cannot be instantiated."
+        "BaseUserServicesInterface is an interface and cannot be instantiated."
       );
     }
   }
@@ -57,4 +57,4 @@ class BaseUserServices {
   }
 }
 
-module.exports = BaseUserServices;
+module.exports = BaseUserServicesInterface;

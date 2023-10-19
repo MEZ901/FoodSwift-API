@@ -1,6 +1,6 @@
-const BaseUserServices = require("../../../application/interfaces/services/users/BaseUserServices");
+const BaseUserServicesInterface = require("../../../application/interfaces/services/users/BaseUserServicesInterface");
 
-class BaseUserServicesImpl extends BaseUserServices {
+class BaseUserServicesImpl extends BaseUserServicesInterface {
   constructor() {
     super();
     this.userRole = "";

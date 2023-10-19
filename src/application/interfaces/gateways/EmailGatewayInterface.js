@@ -1,11 +1,11 @@
 /**
  * @interface
  */
-class EmailGateway {
+class EmailGatewayInterface {
   constructor() {
-    if (this.constructor === EmailGateway) {
+    if (this.constructor === EmailGatewayInterface) {
       throw new Error(
-        "EmailGateway is an interface and cannot be instantiated."
+        "EmailGatewayInterface is an interface and cannot be instantiated."
       );
     }
   }
@@ -21,4 +21,4 @@ class EmailGateway {
   }
 }
 
-module.exports = EmailGateway;
+module.exports = EmailGatewayInterface;

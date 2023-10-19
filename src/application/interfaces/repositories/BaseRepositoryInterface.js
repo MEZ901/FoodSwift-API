@@ -1,11 +1,11 @@
 /**
  * @interface
  */
-class BaseRepository {
+class BaseRepositoryInterface {
   constructor() {
-    if (this.constructor === BaseRepository) {
+    if (this.constructor === BaseRepositoryInterface) {
       throw new Error(
-        "BaseRepository is an interface and cannot be instantiated."
+        "BaseRepositoryInterface is an interface and cannot be instantiated."
       );
     }
   }
@@ -77,4 +77,4 @@ class BaseRepository {
   }
 }
 
-module.exports = BaseRepository;
+module.exports = BaseRepositoryInterface;

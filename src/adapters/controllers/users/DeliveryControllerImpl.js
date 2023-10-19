@@ -1,6 +1,6 @@
-const DeliveryController = require("../../../application/interfaces/controllers/users/DeliveryController");
+const DeliveryControllerInterface = require("../../../application/interfaces/controllers/users/DeliveryControllerInterface");
 
-class DeliveryControllerImpl extends DeliveryController {
+class DeliveryControllerImpl extends DeliveryControllerInterface {
   constructor(deliveryServices) {
     super();
     this.deliveryServices = deliveryServices;

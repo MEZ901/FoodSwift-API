@@ -1,6 +1,6 @@
-const AuthServices = require("../../../application/interfaces/services/auth/AuthServices");
+const AuthServicesInterface = require("../../../application/interfaces/services/auth/AuthServicesInterface");
 
-class AuthServicesImpl extends AuthServices {
+class AuthServicesImpl extends AuthServicesInterface {
   constructor() {
     super();
   }

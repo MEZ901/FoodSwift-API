@@ -1,6 +1,6 @@
-const EmailGateway = require("../../application/interfaces/gateways/EmailGateway");
+const EmailGatewayInterface = require("../../application/interfaces/gateways/EmailGatewayInterface");
 
-class EmailGatewayImpl extends EmailGateway {
+class EmailGatewayImpl extends EmailGatewayInterface {
   constructor() {
     super();
   }

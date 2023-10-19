@@ -1,11 +1,11 @@
 /**
  * @interface
  */
-class DeliveryController {
+class DeliveryControllerInterface {
   constructor() {
-    if (this.constructor === DeliveryController) {
+    if (this.constructor === DeliveryControllerInterface) {
       throw new Error(
-        "DeliveryController is an interface and cannot be instantiated."
+        "DeliveryControllerInterface is an interface and cannot be instantiated."
       );
     }
   }
@@ -61,4 +61,4 @@ class DeliveryController {
   }
 }
 
-module.exports = DeliveryController;
+module.exports = DeliveryControllerInterface;
