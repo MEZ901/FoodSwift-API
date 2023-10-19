@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 class Server {
-  constructor(PORT, routes = [], middlewares = [], errMiddlewares = []) {
+  constructor(PORT, routes, middlewares, errMiddlewares) {
     this.app = express();
     this.PORT = PORT;
     this.routes = routes;
