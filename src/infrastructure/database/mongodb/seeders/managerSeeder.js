@@ -1,4 +1,5 @@
 const { hashPassword } = require("../../../../utils/helpers");
+const { userRepository } = require("../../../../../container");
 
 module.exports = async () => {
   try {
@@ -6,11 +7,11 @@ module.exports = async () => {
       name: "Admin",
       email: "admin@admin.com",
       password: await hashPassword("admin"),
-      roleName: "manager",
+      roleNames: ["customer", "delivery", "manager"],
       isVerified: true,
     };
 
-    return manager;
+    return await userRepository.create(manager);
   } catch (error) {
     throw new Error(error);
   }

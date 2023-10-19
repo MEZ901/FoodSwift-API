@@ -1,5 +1,6 @@
 const { hashPassword } = require("../../../../utils/helpers");
 const { faker } = require("@faker-js/faker");
+const { userRepository } = require("../../../../../container");
 
 module.exports = async (amount = 1) => {
   try {
@@ -13,12 +14,12 @@ module.exports = async (amount = 1) => {
         image: faker.image.avatarLegacy(),
         phoneNumber: faker.phone.number(),
         address: faker.location.streetAddress(),
-        roleName: "customer",
+        roleNames: ["customer"],
         isVerified: true,
       });
     }
 
-    return customers;
+    return await userRepository.createMany(customers);
   } catch (error) {
     throw new Error(error);
   }

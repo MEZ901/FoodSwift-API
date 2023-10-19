@@ -1,11 +1,9 @@
-const RoleRepository = require("../../../../adapters/repositories/RoleRepository");
-const Role = require("../models/Role");
 const logger = require("../../../config/winston");
+const { roleRepository } = require("../../../../../container");
 
 (async () => {
   try {
-    const repository = new RoleRepository(Role);
-    const existingRoles = await repository.find();
+    const existingRoles = await roleRepository.find();
 
     if (existingRoles.length === 0) {
       const roles = [
@@ -13,7 +11,7 @@ const logger = require("../../../config/winston");
         { name: "delivery" },
         { name: "customer" },
       ];
-      return await repository.createMany(roles);
+      return await roleRepository.createMany(roles);
     } else {
       logger.info("Roles collection already has data. Seeder skipped.");
     }

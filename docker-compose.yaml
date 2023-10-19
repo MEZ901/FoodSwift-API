@@ -1,26 +1,13 @@
 version: "3.8"
 services:
-  mongodb:
-    container_name: marhabadine_db
-    image: mongo:latest
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodb-data:/data/db
   api:
-    container_name: marhabadine_api
+    container_name: foodswift_api
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-    image: marhabadine_api:1.0.0
+    image: foodswift_api:1.0.0
     ports:
       - "8080:8080"
     volumes:
       - .:/app
       - /app/node_modules
-    depends_on:
-      - mongodb
-
-volumes:
-  mongodb-data: {}
