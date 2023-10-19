@@ -1,8 +1,9 @@
-const app = require("./src/infrastructure/webserver/app");
+const Server = require("./src/infrastructure/webserver/Server");
 const { PORT } = require("./src/infrastructure/config/environment");
+const routes = require("./src/infrastructure/webserver/routes");
+const [
+  middlewares,
+  errMiddlewares,
+] = require("./src/infrastructure/webserver/middlewares");
 
-app.listen(PORT, () => {
-  console.log(`----------------------------------------------`);
-  console.log(`🚀 Server running on http://localhost:${PORT}/`);
-  console.log(`----------------------------------------------`);
-});
+new Server(PORT, routes, middlewares, errMiddlewares).start();
