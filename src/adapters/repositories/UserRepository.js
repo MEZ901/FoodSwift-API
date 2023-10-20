@@ -50,6 +50,14 @@ class UserRepoistory extends BaseRepositoryImpl {
       throw new Error(error);
     }
   };
+
+  findByEmail = async (email) => {
+    try {
+      return await this.model.findOne({ email });
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
 }
 
 module.exports = UserRepoistory;

@@ -1,13 +1,23 @@
 const AuthControllerInterface = require("../../../application/interfaces/controllers/auth/AuthControllerInterface");
 
 class AuthControllerImpl extends AuthControllerInterface {
-  constructor(authServices) {
+  constructor(options) {
     super();
-    this.authServices = authServices;
+    this.usecases = options.usecases;
+    this.schemas = options.schemas;
+    this.authServices = options.authServices;
+    this.userRepository = options.userRepository;
   }
 
   register = async (req, res) => {
-    res.status(200).json({ message: "Welcome to Register" });
+    const { status, ...rest } = await this.usecases.register(
+      { ...req.body },
+      this.schemas.registerSchema,
+      this.authServices,
+      this.userRepository
+    );
+
+    res.status(status).json({ ...rest });
   };
 
   login = async (req, res) => {

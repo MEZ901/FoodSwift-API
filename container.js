@@ -18,6 +18,16 @@ const User = require("./src/infrastructure/database/mongodb/models/User");
 const UserRepository = require("./src/adapters/repositories/UserRepository");
 const RoleRepository = require("./src/adapters/repositories/RoleRepository");
 
+// Usecases
+const register = require("./src/application/usecases/auth/register");
+
+// Validation schemas
+const registerSchema = require("./src/validations/auth/registerSchema");
+
+// repositories instances
+const userRepository = new UserRepository(User, Role);
+const roleRepository = new RoleRepository(Role);
+
 // services instances
 const customerServices = new CustomerServices();
 const deliveryServices = new DeliveryServices();
@@ -28,11 +38,16 @@ const authServices = new AuthServicesImpl();
 const customerController = new CustomerControllerImpl(customerServices);
 const deliveryController = new DeliveryControllerImpl(deliveryServices);
 const managerController = new ManagerControllerImpl(managerServices);
-const authController = new AuthControllerImpl(authServices);
-
-// repositories instances
-const userRepository = new UserRepository(User, Role);
-const roleRepository = new RoleRepository(Role);
+const authController = new AuthControllerImpl({
+  usecases: {
+    register,
+  },
+  schemas: {
+    registerSchema,
+  },
+  authServices,
+  userRepository,
+});
 
 module.exports = {
   customerController,
