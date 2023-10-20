@@ -6,6 +6,4 @@ const [
   errMiddlewares,
 ] = require("./src/infrastructure/webserver/middlewares");
 
-const webserver = new Server(PORT, routes, middlewares, errMiddlewares);
-
-webserver.start();
+new Server(PORT, routes, middlewares, errMiddlewares).start();

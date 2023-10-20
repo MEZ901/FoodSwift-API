@@ -6,17 +6,7 @@ class BaseUserServicesImpl extends BaseUserServicesInterface {
     this.userRole = "";
   }
 
-  async createUser(userData) {}
-
-  async createManyUsers(usersData) {}
-
-  async getUserById(userId) {}
-
-  async updateUser(userId, userData) {}
-
-  async deleteUser(userId) {}
-
-  async seedUsers(amount, userSeeder) {
+  seedUsers = async (amount, userSeeder) => {
     const res = {
       status: 200,
       message: "",
@@ -39,7 +29,7 @@ class BaseUserServicesImpl extends BaseUserServicesInterface {
       res.message = error.message;
       return res;
     }
-  }
+  };
 }
 
 module.exports = BaseUserServicesImpl;

@@ -16,9 +16,9 @@ class AuthControllerInterface {
    * @param {object} res
    * @returns {Promise<void>}
    */
-  async register(req, res) {
+  register = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * Logs in a user.
@@ -26,9 +26,9 @@ class AuthControllerInterface {
    * @param {Object} res
    * @returns {Promise<void>}
    */
-  async login(req, res) {
+  login = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * Logs out a user.
@@ -36,9 +36,9 @@ class AuthControllerInterface {
    * @param {Object} res
    * @returns {Promise<void>}
    */
-  async logout(req, res) {
+  logout = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 }
 
 module.exports = AuthControllerInterface;

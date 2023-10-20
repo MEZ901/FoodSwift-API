@@ -5,9 +5,7 @@ class EmailGatewayImpl extends EmailGatewayInterface {
     super();
   }
 
-  async sendEmail(to, subject, body) {
-    // Send email using a third-party service
-  }
+  sendEmail = async (to, subject, body) => {};
 }
 
 module.exports = EmailGatewayImpl;

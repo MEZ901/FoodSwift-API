@@ -1,21 +1,22 @@
 const AuthControllerInterface = require("../../../application/interfaces/controllers/auth/AuthControllerInterface");
 
 class AuthControllerImpl extends AuthControllerInterface {
-  constructor() {
+  constructor(authServices) {
     super();
+    this.authServices = authServices;
   }
 
-  async register(req, res) {
-    res.status(200).json({ message: "Register" });
-  }
+  register = async (req, res) => {
+    res.status(200).json({ message: "Welcome to Register" });
+  };
 
-  async login(req, res) {
-    res.status(200).json({ message: "Login" });
-  }
+  login = async (req, res) => {
+    res.status(200).json({ message: "Welcome to Login" });
+  };
 
-  async logout(req, res) {
-    res.status(200).json({ message: "Logout" });
-  }
+  logout = async (req, res) => {
+    res.status(200).json({ message: "Welcome to  Logout" });
+  };
 }
 
 module.exports = AuthControllerImpl;

@@ -15,27 +15,27 @@ class BaseUserServicesInterface {
    * @param {object} userData - The data of the user to create
    * @returns {Promise<object>} - The created user object
    */
-  async createUser(userData) {
+  createUser = async (userData) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * Creates many new users
    * @param {object[]} usersData - The data of the users to create
    * @returns {Promise<object[]>} - The created users objects
    */
-  async createManyUsers(usersData) {
+  createManyUsers = async (usersData) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * Retrieves a user by their ID
    * @param {string} userId - The ID of the user to retrieve
    * @returns {Promise<object>} - The retrieved user object
    */
-  async getUserById(userId) {
+  getUserById = async (userId) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * Updates a user by their ID
@@ -43,18 +43,18 @@ class BaseUserServicesInterface {
    * @param {object} userData - The data to update the user with
    * @returns {Promise<object>} - The updated user object
    */
-  async updateUser(userId, userData) {
+  updateUser = async (userId, userData) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * Deletes a user by their ID
    * @param {string} userId - The ID of the user to delete
    * @returns {Promise<void>}
    */
-  async deleteUser(userId) {
+  deleteUser = async (userId) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 }
 
 module.exports = BaseUserServicesInterface;

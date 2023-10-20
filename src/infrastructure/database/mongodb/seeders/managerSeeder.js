@@ -4,7 +4,8 @@ const { userRepository } = require("../../../../../container");
 module.exports = async () => {
   try {
     const manager = {
-      name: "Admin",
+      firstName: "Admin",
+      lastName: "Admin",
       email: "admin@admin.com",
       password: await hashPassword("admin"),
       roleNames: ["customer", "delivery", "manager"],

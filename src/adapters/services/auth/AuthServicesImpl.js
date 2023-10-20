@@ -5,11 +5,11 @@ class AuthServicesImpl extends AuthServicesInterface {
     super();
   }
 
-  async register(data) {}
+  register = async (data) => {};
 
-  async login(email, password) {}
+  login = async (email, password) => {};
 
-  async verifyToken(token) {}
+  verifyToken = async (token) => {};
 }
 
 module.exports = AuthServicesImpl;

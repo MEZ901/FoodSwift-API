@@ -6,7 +6,7 @@ class UserRepoistory extends BaseRepositoryImpl {
     this.roleModel = Role;
   }
 
-  async create(data) {
+  create = async (data) => {
     const { roleNames, ...userCredentials } = data;
     try {
       const roles = await this.roleModel.find({ name: { $in: roleNames } });
@@ -22,9 +22,9 @@ class UserRepoistory extends BaseRepositoryImpl {
     } catch (error) {
       throw new Error(error);
     }
-  }
+  };
 
-  async createMany(data) {
+  createMany = async (data) => {
     try {
       const availableRoles = await this.roleModel.find();
 
@@ -49,7 +49,7 @@ class UserRepoistory extends BaseRepositoryImpl {
     } catch (error) {
       throw new Error(error);
     }
-  }
+  };
 }
 
 module.exports = UserRepoistory;

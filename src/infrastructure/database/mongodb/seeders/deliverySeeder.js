@@ -8,7 +8,8 @@ module.exports = async (amount = 1) => {
 
     for (let i = 0; i < amount; i++) {
       deliveries.push({
-        name: faker.person.fullName(),
+        firstName: faker.person.firstName(),
+        lastName: faker.person.lastName(),
         email: faker.internet.email(),
         password: await hashPassword("password"),
         image: faker.image.avatarLegacy(),

@@ -12,53 +12,53 @@ class DeliveryControllerInterface {
 
   /**
    * create a new delivery
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of created delivery
    */
-  async createDelivery(req, res) {
+  createDelivery = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * get a delivery by ID
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of delivery
    */
-  async getDelivery(req, res) {
+  getDelivery = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * get all deliveries
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of deliveries
    */
-  async getAllDeliveries(req, res) {
+  getAllDeliveries = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * update a delivery
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of updated delivery
    */
-  async updateDelivery(req, res) {
+  updateDelivery = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * delete a delivery
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of deleted delivery
    */
-  async deleteDelivery(req, res) {
+  deleteDelivery = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 }
 
 module.exports = DeliveryControllerInterface;

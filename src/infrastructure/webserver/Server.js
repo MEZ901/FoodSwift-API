@@ -10,7 +10,7 @@ class Server {
     this.errMiddlewares = errMiddlewares;
   }
 
-  configure() {
+  configure = () => {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -25,9 +25,9 @@ class Server {
     this.errMiddlewares.forEach((errMiddleware) => {
       this.app.use(errMiddleware);
     });
-  }
+  };
 
-  start() {
+  start = () => {
     this.configure();
 
     this.app.listen(this.PORT, () => {
@@ -35,7 +35,7 @@ class Server {
       console.log(`🚀 Server running on http://localhost:${this.PORT}/`);
       console.log(`----------------------------------------------`);
     });
-  }
+  };
 }
 
 module.exports = Server;

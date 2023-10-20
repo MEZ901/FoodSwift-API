@@ -12,53 +12,53 @@ class CustomerControllerInterface {
 
   /**
    * create a new customer
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of created customer
    */
-  async createCustomer(req, res) {
+  createCustomer = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * get a customer by ID
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of customer
    */
-  async getCustomer(req, res) {
+  getCustomer = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * get all customers
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of customers
    */
-  async getAllCustomers(req, res) {
+  getAllCustomers = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * update a customer
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of updated customer
    */
-  async updateCustomer(req, res) {
+  updateCustomer = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * delete a customer
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of deleted customer
    */
-  async deleteCustomer(req, res) {
+  deleteCustomer = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 }
 
 module.exports = CustomerControllerInterface;

@@ -16,9 +16,9 @@ class EmailGatewayInterface {
    * @param {string} body - Body of the email
    * @returns {Promise<void>} - Promise that resolves when the email is sent
    */
-  async sendEmail(to, subject, body) {
+  sendEmail = async (to, subject, body) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 }
 
 module.exports = EmailGatewayInterface;

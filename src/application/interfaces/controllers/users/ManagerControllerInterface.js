@@ -12,53 +12,53 @@ class ManagerControllerInterface {
 
   /**
    * create a new manager
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of created manager
    */
-  async createManager(req, res) {
+  createManager = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * get a manager by ID
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of manager
    */
-  async getManager(req, res) {
+  getManager = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * get all managers
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of managers
    */
-  async getAllManagers(req, res) {
+  getAllManagers = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * update a manager
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of updated manager
    */
-  async updateManager(req, res) {
+  updateManager = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 
   /**
    * delete a manager
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {Promise<object>} - promise object of deleted manager
    */
-  async deleteManager(req, res) {
+  deleteManager = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  }
+  };
 }
 
 module.exports = ManagerControllerInterface;

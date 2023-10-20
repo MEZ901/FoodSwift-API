@@ -6,27 +6,27 @@ class BaseRepositoryImpl extends BaseRepositoryInterface {
     this.model = model;
   }
 
-  async create(data) {
+  create = async (data) => {
     return await this.model.create(data);
-  }
+  };
 
-  async createMany(data) {
+  createMany = async (data) => {
     return await this.model.insertMany(data);
-  }
+  };
 
-  async findById(id, includeDeleted = false) {
+  findById = async (id, includeDeleted = false) => {
     const query = includeDeleted ? { _id: id } : { _id: id, isDeleted: false };
     return await this.model.findOne(query);
-  }
+  };
 
-  async find(conditions = {}, includeDeleted = false) {
+  find = async (conditions = {}, includeDeleted = false) => {
     const query = includeDeleted
       ? conditions
       : { ...conditions, isDeleted: false };
     return await this.model.find(query);
-  }
+  };
 
-  async update(id, data) {
+  update = async (id, data) => {
     const existingDoc = await this.findById(id);
     if (existingDoc) {
       data.updatedAt = new Date();
@@ -34,19 +34,19 @@ class BaseRepositoryImpl extends BaseRepositoryInterface {
     } else {
       throw new Error("Document not found or soft-deleted.");
     }
-  }
+  };
 
-  async softDelete(id) {
+  softDelete = async (id) => {
     return await this.model.findByIdAndUpdate(
       id,
       { isDeleted: true },
       { new: true }
     );
-  }
+  };
 
-  async forceDelete(id) {
+  forceDelete = async (id) => {
     return await this.model.findByIdAndDelete(id);
-  }
+  };
 }
 
 module.exports = BaseRepositoryImpl;
