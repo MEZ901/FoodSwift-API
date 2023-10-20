@@ -7,21 +7,30 @@ class AuthControllerImpl extends AuthControllerInterface {
     this.schemas = options.schemas;
     this.authServices = options.authServices;
     this.userRepository = options.userRepository;
+    this.userTokenRepository = options.userTokenRepository;
   }
 
   register = async (req, res) => {
-    const { status, ...rest } = await this.usecases.register(
-      { ...req.body },
-      this.schemas.registerSchema,
-      this.authServices,
-      this.userRepository
-    );
+    const { status, ...rest } = await this.usecases.register({
+      userData: { ...req.body },
+      registerSchema: this.schemas.registerSchema,
+      authServices: this.authServices,
+      userRepository: this.userRepository,
+    });
 
     res.status(status).json({ ...rest });
   };
 
   login = async (req, res) => {
-    res.status(200).json({ message: "Welcome to Login" });
+    const { status, ...rest } = await this.usecases.login({
+      userData: { ...req.body },
+      lgoinSchema: this.schemas.loginSchema,
+      authServices: this.authServices,
+      userRepository: this.userRepository,
+      userTokenRepository: this.userTokenRepository,
+    });
+
+    res.status(status).json({ ...rest });
   };
 
   logout = async (req, res) => {

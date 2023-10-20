@@ -1,15 +1,13 @@
-module.exports = async (
+module.exports = async ({
   userData,
   registerSchema,
   authServices,
-  userRepository
-) => {
+  userRepository,
+}) => {
   userData.roleNames = ["customer"];
 
   const validationErr = authServices.validateData(userData, registerSchema);
-  if (validationErr) {
-    return validationErr;
-  }
+  if (validationErr) return validationErr;
 
   const user = await userRepository.findByEmail(userData.email);
   if (user) {

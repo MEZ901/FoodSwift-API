@@ -37,6 +37,25 @@ class AuthServicesInterface {
   hashPassword = async (password) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
   };
+
+  /**
+   * Compares the given password with the given hashed password
+   * @param {string} password - The password to compare
+   * @param {string} hashedPassword - The hashed password to compare
+   * @returns {Promise<boolean>} - A promise that resolves with a boolean indicating whether the password is valid or not
+   */
+  comparePassword = async (password, hashedPassword) => {
+    throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
+  };
+
+  /**
+   * Generates a JWT token with the given payload
+   * @param {object} payload - The payload to sign
+   * @returns {Promise<string>} - A promise that resolves with the JWT token
+   */
+  generateToken = async (payload) => {
+    throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
+  };
 }
 
 module.exports = AuthServicesInterface;

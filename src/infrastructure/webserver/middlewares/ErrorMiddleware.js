@@ -1,4 +1,4 @@
-const logger = require("../../config/winston");
+const logger = require("../../packages/winston");
 const { NODE_ENV } = require("../../config/environment");
 
 const ErrorMiddleware = (err, req, res, next) => {

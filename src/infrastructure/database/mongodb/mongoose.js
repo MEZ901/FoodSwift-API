@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const logger = require("../../config/winston");
+const logger = require("../../packages/winston");
 const environment = require("../../config/environment");
 
 mongoose.set("strictQuery", true);

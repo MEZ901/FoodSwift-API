@@ -13,26 +13,34 @@ const AuthServicesImpl = require("./src/adapters/services/auth/AuthServicesImpl"
 // Models
 const Role = require("./src/infrastructure/database/mongodb/models/Role");
 const User = require("./src/infrastructure/database/mongodb/models/User");
+const UserToken = require("./src/infrastructure/database/mongodb/models/UserToken");
 
 // Repositories
 const UserRepository = require("./src/adapters/repositories/UserRepository");
 const RoleRepository = require("./src/adapters/repositories/RoleRepository");
+const UserTokenRepository = require("./src/adapters/repositories/UserTokenRepository");
 
 // Usecases
 const register = require("./src/application/usecases/auth/register");
+const login = require("./src/application/usecases/auth/login");
 
 // Validation schemas
 const registerSchema = require("./src/validations/auth/registerSchema");
+const loginSchema = require("./src/validations/auth/loginSchema");
+
+// JsonWebToken
+const jsonWebToken = require("./src/utils/JsonWebToken");
 
 // repositories instances
 const userRepository = new UserRepository(User, Role);
 const roleRepository = new RoleRepository(Role);
+const userTokenRepository = new UserTokenRepository(UserToken);
 
 // services instances
 const customerServices = new CustomerServices();
 const deliveryServices = new DeliveryServices();
 const managerServices = new ManagerServices();
-const authServices = new AuthServicesImpl();
+const authServices = new AuthServicesImpl(jsonWebToken);
 
 // controllers instances
 const customerController = new CustomerControllerImpl(customerServices);
@@ -41,12 +49,15 @@ const managerController = new ManagerControllerImpl(managerServices);
 const authController = new AuthControllerImpl({
   usecases: {
     register,
+    login,
   },
   schemas: {
     registerSchema,
+    loginSchema,
   },
   authServices,
   userRepository,
+  userTokenRepository,
 });
 
 module.exports = {
@@ -56,4 +67,5 @@ module.exports = {
   authController,
   userRepository,
   roleRepository,
+  userTokenRepository,
 };

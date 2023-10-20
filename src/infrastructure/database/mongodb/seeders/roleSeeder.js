@@ -1,4 +1,4 @@
-const logger = require("../../../config/winston");
+const logger = require("../../../packages/winston");
 const { roleRepository } = require("../../../../../container");
 
 (async () => {

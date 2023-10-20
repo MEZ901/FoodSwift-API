@@ -13,6 +13,11 @@ const userTokenSchema = Schema({
   createdAt: {
     type: Date,
     default: Date.now(),
+    required: true,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now(),
     exp: 60 * 60 * 24 * 7, // 7 days
     required: true,
   },
