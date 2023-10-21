@@ -18,7 +18,7 @@ class AuthControllerImpl extends AuthControllerInterface {
             userRepository: this.userRepository,
         });
 
-        res.status(status).json({...rest});
+        res.status(status).json({ ...rest });
     };
 
     login = async (req, res) => {
@@ -30,11 +30,18 @@ class AuthControllerImpl extends AuthControllerInterface {
             userTokenRepository: this.userTokenRepository,
         });
 
-        res.status(status).json({...rest});
+        res.status(status).json({ ...rest });
     };
 
     logout = async (req, res) => {
-        res.status(200).json({message: "Welcome to  Logout"});
+        const { refreshToken } = req.body;
+        const { status, ...rest } = await this.usecases.logout({
+            refreshToken: refreshToken,
+            refreshTokenSchema: this.schemas.refreshTokenSchema,
+            authServices: this.authServices,
+            userTokenRepository: this.userTokenRepository,
+        });
+        res.status(status).json({ ...rest });
     };
 
     refreshToken = async (req, res) => {
@@ -47,7 +54,7 @@ class AuthControllerImpl extends AuthControllerInterface {
             userTokenRepository: this.userTokenRepository,
         });
 
-        res.status(status).json({...rest});
+        res.status(status).json({ ...rest });
     };
 }
 

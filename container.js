@@ -24,6 +24,7 @@ const UserTokenRepository = require("./src/adapters/repositories/UserTokenReposi
 const register = require("./src/application/usecases/auth/register");
 const login = require("./src/application/usecases/auth/login");
 const refreshToken = require("./src/application/usecases/auth/refreshToken");
+const logout = require("./src/application/usecases/auth/logout");
 
 // Validation schemas
 const registerSchema = require("./src/validations/auth/registerSchema");
@@ -53,6 +54,7 @@ const authController = new AuthControllerImpl({
     register,
     login,
     refreshToken,
+    logout,
   },
   schemas: {
     registerSchema,
