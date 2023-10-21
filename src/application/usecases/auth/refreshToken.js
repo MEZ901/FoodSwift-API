@@ -49,6 +49,7 @@ module.exports = async ({
 
   return {
     status: 200,
+    message: "Access token has been refreshed",
     accessToken,
   };
 };

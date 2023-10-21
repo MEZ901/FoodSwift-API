@@ -50,14 +50,18 @@ class AuthControllerImpl extends AuthControllerInterface {
     };
 
     refreshToken = async (req, res) => {
-        const {refreshToken} = req.body;
-        const {status, ...rest} = await this.usecases.refreshToken({
-            refreshToken: refreshToken,
+        const { refresh_token } = req.cookies;
+        const {status, accessToken, ...rest} = await this.usecases.refreshToken({
+            refreshToken: refresh_token,
             refreshTokenSchema: this.schemas.refreshTokenSchema,
             authServices: this.authServices,
             userRepository: this.userRepository,
             userTokenRepository: this.userTokenRepository,
         });
+
+        if (accessToken) {
+            res.cookie('access_token', accessToken, { httpOnly: true });
+        }
 
         res.status(status).json({ ...rest });
     };
