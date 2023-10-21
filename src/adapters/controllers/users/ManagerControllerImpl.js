@@ -6,6 +6,10 @@ class ManagerControllerImpl extends ManagerControllerInterface {
     this.managerServices = managerServices;
   }
 
+  profile = async (req, res) => {
+    return res.status(200).json({ message: "Hi manager" });
+  };
+
   seed = async (req, res) => {
     const managerSeeder = require("../../../infrastructure/database/mongodb/seeders/managerSeeder");
     const amount = req.query.amount;

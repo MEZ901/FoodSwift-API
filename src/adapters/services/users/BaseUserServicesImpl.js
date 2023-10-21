@@ -6,6 +6,13 @@ class BaseUserServicesImpl extends BaseUserServicesInterface {
     this.userRole = "";
   }
 
+  profile = async (user) => {
+    const res = {
+      status: 200,
+      message: `Welcome ${user.name}, you are logged in as a ${this.userRole}.`,
+    };
+  };
+
   seedUsers = async (amount, userSeeder) => {
     const res = {
       status: 200,

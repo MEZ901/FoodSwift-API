@@ -31,9 +31,9 @@ class Server {
     this.configure();
 
     this.app.listen(this.PORT, () => {
-      console.log(`----------------------------------------------`);
-      console.log(`🚀 Server running on http://localhost:${this.PORT}/`);
-      console.log(`----------------------------------------------`);
+      console.log(`-----------------------------------------------`);
+      console.log(`| 🚀 Server running on http://localhost:${this.PORT}/ |`);
+      console.log(`-----------------------------------------------`);
     });
   };
 }

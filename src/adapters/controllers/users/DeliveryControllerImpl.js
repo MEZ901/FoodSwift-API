@@ -6,6 +6,10 @@ class DeliveryControllerImpl extends DeliveryControllerInterface {
     this.deliveryServices = deliveryServices;
   }
 
+  profile = async (req, res) => {
+    return res.status(200).json({ message: "Hi delivery" });
+  };
+
   seed = async (req, res) => {
     const deliverySeeder = require("../../../infrastructure/database/mongodb/seeders/deliverySeeder");
     const amount = req.query.amount;

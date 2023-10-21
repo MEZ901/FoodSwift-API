@@ -6,6 +6,10 @@ class CustomerControllerImpl extends CustomerControllerInterface {
     this.customerServices = customerServices;
   }
 
+  profile = async (req, res) => {
+    return res.status(200).json({ message: "Hi customer" });
+  };
+
   seed = async (req, res) => {
     const customerSeeder = require("../../../infrastructure/database/mongodb/seeders/customerSeeder");
     const amount = req.query.amount;
