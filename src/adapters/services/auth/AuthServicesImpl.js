@@ -31,16 +31,6 @@ class AuthServicesImpl extends AuthServicesInterface {
     return await bcrypt.compare(password, hashedPassword);
   };
 
-  generateTokens = async (payload) => {
-    const accessToken = await this.generateAccessToken(payload);
-    const refreshToken = await this.generateRefreshToken(payload);
-
-    return {
-      accessToken,
-      refreshToken,
-    };
-  };
-
   generateAccessToken = async (payload) => {
     const { access_token_secret } = this.jsonWebToken;
     return await this.jsonWebToken.generate(

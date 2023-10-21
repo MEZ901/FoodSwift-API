@@ -43,6 +43,8 @@ module.exports = async ({
     lastName: user.lastName,
     email: user.email,
     roles: user.roles.map((role) => role.name),
+    isVerified: user.isVerified,
+    isBanned: user.isBanned,
   });
 
   return {

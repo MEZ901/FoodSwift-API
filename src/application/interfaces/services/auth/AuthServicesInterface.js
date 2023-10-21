@@ -11,15 +11,6 @@ class AuthServicesInterface {
   }
 
   /**
-   * Verifies a JWT token and returns the decoded payload
-   * @param {string} token - The JWT token to verify
-   * @returns {Promise<object>} - A promise that resolves with the decoded payload
-   */
-  verifyToken = async (token) => {
-    throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  };
-
-  /**
    * Validates the given data against the given schema
    * @param {object} data - The data to validate
    * @param {object} schema - The schema to validate the data against
@@ -49,13 +40,40 @@ class AuthServicesInterface {
   };
 
   /**
-   * Generates a JWT token with the given payload
+   * Generates an access token
    * @param {object} payload - The payload to sign
-   * @returns {Promise<string>} - A promise that resolves with the JWT token
+   * @returns {Promise<string>} - A promise that resolves with the access token
    */
-  generateToken = async (payload) => {
-    throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-  };
+    generateAccessToken = async (payload) => {
+      throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
+    }
+
+  /**
+   * Generates a refresh token
+   * @param {object} payload - The payload to sign
+   * @returns {Promise<string>} - A promise that resolves with the refresh token
+   */
+    generateRefreshToken = async (payload) => {
+      throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
+    }
+
+  /**
+   * Verifies the given access token
+   * @param {string} token - The access token to verify
+   * @returns {Promise<object>} - A promise that resolves with the decoded access token
+   */
+    verifyAccessToken = async (token) => {
+      throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
+    }
+
+  /**
+   * Verifies the given refresh token
+   * @param {string} token - The refresh token to verify
+   * @returns {Promise<object>} - A promise that resolves with the decoded refresh token
+   */
+    verifyRefreshToken = async (token) => {
+      throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
+    }
 }
 
 module.exports = AuthServicesInterface;

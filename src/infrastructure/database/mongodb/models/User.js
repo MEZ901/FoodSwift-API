@@ -39,6 +39,10 @@ const userSchema = Schema({
     type: Boolean,
     default: false,
   },
+  isBanned: {
+    type: Boolean,
+    default: false,
+  },
   createdAt: {
     type: Date,
     default: Date.now(),
