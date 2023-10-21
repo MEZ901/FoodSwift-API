@@ -33,7 +33,7 @@ module.exports = async ({
     };
   }
 
-  const token = await authServices.generateToken({
+  const tokens = await authServices.generateTokens({
     id: user._id,
     firstName: user.firstName,
     lastName: user.lastName,
@@ -44,19 +44,19 @@ module.exports = async ({
   const userToken = await userTokenRepository.find({ userId: user._id });
   if (userToken.length > 0) {
     await userTokenRepository.update(userToken[0]._id, {
-      refreshToken: token.refreshToken,
+      refreshToken: tokens.refreshToken,
       updatedAt: new Date(),
     });
   } else {
     await userTokenRepository.create({
       userId: user._id,
-      refreshToken: token.refreshToken,
+      refreshToken: tokens.refreshToken,
     });
   }
 
   return {
     status: 200,
     message: "User logged in successfully",
-    token,
+    tokens,
   };
 };

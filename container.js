@@ -23,10 +23,12 @@ const UserTokenRepository = require("./src/adapters/repositories/UserTokenReposi
 // Usecases
 const register = require("./src/application/usecases/auth/register");
 const login = require("./src/application/usecases/auth/login");
+const refreshToken = require("./src/application/usecases/auth/refreshToken");
 
 // Validation schemas
 const registerSchema = require("./src/validations/auth/registerSchema");
 const loginSchema = require("./src/validations/auth/loginSchema");
+const refreshTokenSchema = require("./src/validations/auth/refreshTokenSchema");
 
 // JsonWebToken
 const jsonWebToken = require("./src/utils/JsonWebToken");
@@ -50,10 +52,12 @@ const authController = new AuthControllerImpl({
   usecases: {
     register,
     login,
+    refreshToken,
   },
   schemas: {
     registerSchema,
     loginSchema,
+    refreshTokenSchema,
   },
   authServices,
   userRepository,

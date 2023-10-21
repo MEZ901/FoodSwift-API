@@ -7,8 +7,6 @@ class AuthServicesImpl extends AuthServicesInterface {
     this.jsonWebToken = jsonWebToken;
   }
 
-  verifyToken = async (token) => {};
-
   validateData = (data, schema) => {
     const { error } = schema.validate(data);
     if (error) {
@@ -33,24 +31,42 @@ class AuthServicesImpl extends AuthServicesInterface {
     return await bcrypt.compare(password, hashedPassword);
   };
 
-  generateToken = async (payload) => {
-    const { access_token_secret, refresh_token_secret } = this.jsonWebToken;
-
-    const accessToken = await this.jsonWebToken.generate(
-      payload,
-      access_token_secret,
-      "15m"
-    );
-    const refreshToken = await this.jsonWebToken.generate(
-      payload,
-      refresh_token_secret,
-      "7d"
-    );
+  generateTokens = async (payload) => {
+    const accessToken = await this.generateAccessToken(payload);
+    const refreshToken = await this.generateRefreshToken(payload);
 
     return {
       accessToken,
       refreshToken,
     };
+  };
+
+  generateAccessToken = async (payload) => {
+    const { access_token_secret } = this.jsonWebToken;
+    return await this.jsonWebToken.generate(
+      payload,
+      access_token_secret,
+      "15m"
+    );
+  };
+
+  generateRefreshToken = async (payload) => {
+    const { refresh_token_secret } = this.jsonWebToken;
+    return await this.jsonWebToken.generate(
+      payload,
+      refresh_token_secret,
+      "7d"
+    );
+  };
+
+  verifyAccessToken = async (token) => {
+    const { access_token_secret } = this.jsonWebToken;
+    return await this.jsonWebToken.verify(token, access_token_secret);
+  };
+
+  verifyRefreshToken = async (token) => {
+    const { refresh_token_secret } = this.jsonWebToken;
+    return await this.jsonWebToken.verify(token, refresh_token_secret);
   };
 }
 

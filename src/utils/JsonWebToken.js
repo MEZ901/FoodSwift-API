@@ -21,7 +21,20 @@ class JsonWebToken {
       const token = await jwt.sign(payload, secret, options);
       return token;
     } catch (err) {
-      throw err;
+      throw new Error(err);
+    }
+  };
+
+  verify = async (token, secret) => {
+    if (!this.access_token_secret || !this.refresh_token_secret) {
+      throw new Error("JWT secret keys are not defined");
+    }
+
+    try {
+      const decoded = await jwt.verify(token, secret);
+      return decoded;
+    } catch (err) {
+      throw new Error(err);
     }
   };
 }
