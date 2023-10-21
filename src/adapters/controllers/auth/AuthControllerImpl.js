@@ -22,13 +22,18 @@ class AuthControllerImpl extends AuthControllerInterface {
     };
 
     login = async (req, res) => {
-        const {status, ...rest} = await this.usecases.login({
+        const {status, jwt, ...rest} = await this.usecases.login({
             userData: {...req.body},
             loginSchema: this.schemas.loginSchema,
             authServices: this.authServices,
             userRepository: this.userRepository,
             userTokenRepository: this.userTokenRepository,
         });
+
+        if (jwt) {
+            res.cookie('access_token', jwt.accessToken, { httpOnly: true });
+            res.cookie('refresh_token', jwt.refreshToken, { httpOnly: true });
+        }
 
         res.status(status).json({ ...rest });
     };

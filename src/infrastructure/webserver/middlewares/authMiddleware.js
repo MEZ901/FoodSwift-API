@@ -1,16 +1,20 @@
 const { authServices } = require("../../../../container");
 
-const authMiddleware = (req, res, next) => {
-    const { authorization } = req.headers;
-    if (!authorization) {
+const authMiddleware = async (req, res, next) => {
+    const { access_token, refresh_token } = req.cookies;
+
+    if (!access_token) {
         res.status(401).json({ error: "Access Denied: No Token Provided" });
     }
 
     try {
-        const decoded = authServices.verifyAccessToken(token);
-        next();
+        const decodedAccessToken = await authServices.verifyAccessToken(access_token);
+        if (decodedAccessToken) {
+            req.user = decodedAccessToken;
+            return next();
+        }
     } catch (error) {
-        res.status(401).json({ error: "Access Denied: Invalid Token" });
+        return res.status(401).json({ message: 'Access Denied: Invalid access token.' });
     }
 };
 

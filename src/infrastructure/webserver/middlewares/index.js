@@ -1,7 +1,7 @@
-const ErrorMiddleware = require("./ErrorMiddleware");
-const NotFoundMiddleware = require("./NotFoundMiddleware");
+const errorMiddleware = require("./ErrorMiddleware");
+const notFoundMiddleware = require("./notFoundMiddleware");
 
 const middlewares = [];
-const errMiddlewares = [NotFoundMiddleware, ErrorMiddleware];
+const errMiddlewares = [notFoundMiddleware, errorMiddleware];
 
 module.exports = [middlewares, errMiddlewares];

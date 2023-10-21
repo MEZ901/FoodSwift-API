@@ -1,5 +1,5 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 class Server {
   constructor(PORT, routes, middlewares, errMiddlewares) {
@@ -11,8 +11,8 @@ class Server {
   }
 
   configure = () => {
-    this.app.use(bodyParser.json());
-    this.app.use(bodyParser.urlencoded({ extended: true }));
+    this.app.use(cookieParser());
+    this.app.use(express.json());
 
     this.middlewares.forEach((middleware) => {
       this.app.use(middleware);

@@ -1,7 +1,7 @@
 const logger = require("../../packages/winston");
 const { NODE_ENV } = require("../../config/environment");
 
-const ErrorMiddleware = (err, req, res, next) => {
+const errorMiddleware = (err, req, res, next) => {
   const { status = 500, message } = err;
   const { method, originalUrl, ip } = req;
 
@@ -16,4 +16,4 @@ const ErrorMiddleware = (err, req, res, next) => {
   res.json({ error: message });
 };
 
-module.exports = ErrorMiddleware;
+module.exports = errorMiddleware;
