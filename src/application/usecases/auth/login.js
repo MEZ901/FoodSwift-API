@@ -1,11 +1,11 @@
 module.exports = async ({
   userData,
-  lgoinSchema,
+  loginSchema,
   authServices,
   userRepository,
   userTokenRepository,
 }) => {
-  const validationErr = authServices.validateData(userData, lgoinSchema);
+  const validationErr = authServices.validateData(userData, loginSchema);
   if (validationErr) return validationErr;
 
   const user = await userRepository.findByEmail(userData.email);

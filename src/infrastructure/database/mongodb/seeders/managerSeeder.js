@@ -1,5 +1,5 @@
-const { hashPassword } = require("../../../../utils/helpers");
 const { userRepository } = require("../../../../../container");
+const { authServices } = require("../../../../../container");
 
 module.exports = async () => {
   try {
@@ -7,7 +7,7 @@ module.exports = async () => {
       firstName: "Admin",
       lastName: "Admin",
       email: "admin@admin.com",
-      password: await hashPassword("admin"),
+      password: await authServices.hashPassword("admin"),
       roleNames: ["customer", "delivery", "manager"],
       isVerified: true,
     };

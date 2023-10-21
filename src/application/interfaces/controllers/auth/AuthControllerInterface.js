@@ -12,9 +12,9 @@ class AuthControllerInterface {
 
   /**
    * Registers a new user.
-   * @param {object} req
-   * @param {object} res
-   * @returns {Promise<void>}
+   * @param {object} req - The request object.
+   * @param {object} res - The response object.
+   * @returns {Promise<void>} - A promise that resolves to nothing.
    */
   register = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
@@ -22,9 +22,9 @@ class AuthControllerInterface {
 
   /**
    * Logs in a user.
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - The request object.
+   * @param {object} res - The response object.
+   * @returns {Promise<void>} - A promise that resolves to nothing.
    */
   login = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
@@ -32,13 +32,23 @@ class AuthControllerInterface {
 
   /**
    * Logs out a user.
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Promise<void>}
+   * @param {object} req - The request object.
+   * @param {object} res - The response object.
+   * @returns {Promise<void>} - A promise that resolves to nothing.
    */
   logout = async (req, res) => {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
   };
+
+  /**
+   * Refreshes a user's token.
+   * @param {object} req - The request object.
+   * @param {object} res - The response object.
+   * @returns {Promise<void>} - A promise that resolves to nothing.
+   */
+    refreshToken = async (req, res) => {
+      throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
+    }
 }
 
 module.exports = AuthControllerInterface;

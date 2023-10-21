@@ -1,6 +1,6 @@
-const { hashPassword } = require("../../../../utils/helpers");
-const { faker } = require("@faker-js/faker");
 const { userRepository } = require("../../../../../container");
+const { authServices } = require("../../../../../container");
+const { faker } = require("@faker-js/faker");
 
 module.exports = async (amount = 1) => {
   try {
@@ -11,7 +11,7 @@ module.exports = async (amount = 1) => {
         firstName: faker.person.firstName(),
         lastName: faker.person.lastName(),
         email: faker.internet.email(),
-        password: await hashPassword("password"),
+        password: await authServices.hashPassword("password"),
         image: faker.image.avatarLegacy(),
         phoneNumber: faker.phone.number(),
         address: faker.location.streetAddress(),
