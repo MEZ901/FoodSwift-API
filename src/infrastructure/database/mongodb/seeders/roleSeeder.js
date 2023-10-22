@@ -11,7 +11,8 @@ const { roleRepository } = require("../../../../../container");
         { name: "delivery" },
         { name: "customer" },
       ];
-      return await roleRepository.createMany(roles);
+      await roleRepository.createMany(roles);
+      logger.info("Roles collection seeded successfully.");
     } else {
       logger.info("Roles collection already has data. Seeder skipped.");
     }

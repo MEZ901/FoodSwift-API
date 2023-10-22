@@ -1,6 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JetClientState">
+    <option name="folders">
+      <list>
+        <folderState>
+          <option name="id" value="b53838ff-01d5-4577-82f2-bce462295363" />
+          <option name="name" value="auth" />
+          <option name="requests">
+            <list>
+              <requestState>
+                <option name="body">
+                  <bodyState>
+                    <option name="raw" value="{&#10;  &quot;firstName&quot;: &quot;issam&quot;,&#10;  &quot;lastName&quot;: &quot;mezgueldi&quot;,&#10;  &quot;email&quot;: &quot;issam@gmail.com&quot;,&#10;  &quot;password&quot;: &quot;issamissam&quot;&#10;}" />
+                    <option name="type" value="JSON" />
+                  </bodyState>
+                </option>
+                <option name="headers">
+                  <list>
+                    <headerState>
+                      <option name="key" value="Content-Type" />
+                      <option name="value" value="application/json" />
+                    </headerState>
+                  </list>
+                </option>
+                <option name="id" value="0df23aad-7619-4613-8ac4-78bcfe229017" />
+                <option name="method" value="POST" />
+                <option name="name" value="register" />
+                <option name="url" value="http://localhost:8080/api/v1/auth/register" />
+              </requestState>
+              <requestState>
+                <option name="body">
+                  <bodyState>
+                    <option name="raw" value="{&#10;  &quot;email&quot;: &quot;issam@gmail.com&quot;,&#10;  &quot;password&quot;: &quot;issamissam&quot;&#10;}" />
+                    <option name="type" value="JSON" />
+                  </bodyState>
+                </option>
+                <option name="headers">
+                  <list>
+                    <headerState>
+                      <option name="key" value="Content-Type" />
+                      <option name="value" value="application/json" />
+                    </headerState>
+                  </list>
+                </option>
+                <option name="id" value="56148eb6-1da0-4a0f-8e0e-bc8ac548b1eb" />
+                <option name="method" value="POST" />
+                <option name="name" value="login" />
+                <option name="url" value="http://localhost:8080/api/v1/auth/login" />
+              </requestState>
+              <requestState>
+                <option name="id" value="54079667-64d8-4d91-b1cf-b321ca5df9f7" />
+                <option name="method" value="POST" />
+                <option name="name" value="refresh-token" />
+                <option name="url" value="http://localhost:8080/api/v1/auth/refresh-token" />
+              </requestState>
+            </list>
+          </option>
+          <option name="sortWeight" value="1000000" />
+          <option name="syncProperties">
+            <synchronizationPropertiesState>
+              <option name="folderPath" value="$PROJECT_DIR$/.jetclient" />
+            </synchronizationPropertiesState>
+          </option>
+        </folderState>
+        <folderState>
+          <option name="folders">
+            <list>
+              <folderState>
+                <option name="id" value="03de5ca9-1342-444f-8336-2c8c9c53c170" />
+                <option name="name" value="customers" />
+                <option name="requests">
+                  <list>
+                    <requestState>
+                      <option name="id" value="8e1a6d2d-9e48-49e4-b501-dd697fef3da4" />
+                      <option name="method" value="GET" />
+                      <option name="name" value="profile" />
+                      <option name="url" value="http://localhost:8080/api/v1/customer/" />
+                    </requestState>
+                  </list>
+                </option>
+                <option name="sortWeight" value="1000000" />
+              </folderState>
+            </list>
+          </option>
+          <option name="id" value="965bb8e6-c60e-4e2e-9274-6f41840e5e7b" />
+          <option name="name" value="users" />
+          <option name="sortWeight" value="2000000" />
+          <option name="syncProperties">
+            <synchronizationPropertiesState>
+              <option name="folderPath" value="$PROJECT_DIR$/.jetclient" />
+            </synchronizationPropertiesState>
+          </option>
+        </folderState>
+      </list>
+    </option>
     <option name="id" value="ecab4ae6-bc03-41db-87b4-32d31ae0f7f6" />
   </component>
 </project>
