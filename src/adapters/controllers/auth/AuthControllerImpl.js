@@ -70,10 +70,23 @@ class AuthControllerImpl extends AuthControllerInterface {
 
   verifyEmail = async (req, res) => {
     const { token } = req.query;
+
     const { status, ...rest } = await this.usecases.verifyEmail({
-      token: token,
+      token,
       authServices: this.authServices,
       userRepository: this.userRepository,
+    });
+
+    res.status(status).json({ ...rest });
+  };
+
+  sendResetPasswordEmail = async (req, res) => {
+    const { email } = req.body;
+
+    const { status, ...rest } = await this.usecases.sendResetPasswordEmail({
+      email,
+      authServices: this.authServices,
+      emailServices: this.emailServices,
     });
 
     res.status(status).json({ ...rest });

@@ -94,6 +94,43 @@ class AuthServicesImpl extends AuthServicesInterface {
       };
     }
   };
+
+  generateResetPasswordToken = async (payload) => {
+    const { reset_password_token_secret } = this.jsonWebToken;
+    return await this.jsonWebToken.generate(
+      payload,
+      reset_password_token_secret,
+      "10m"
+    );
+  };
+
+  verifyResetPasswordToken = async (token) => {
+    const { reset_password_token_secret } = this.jsonWebToken;
+
+    try {
+      const payload = await this.jsonWebToken.verify(
+        token,
+        reset_password_token_secret
+      );
+
+      return {
+        status: 200,
+        payload,
+      };
+    } catch (error) {
+      if (error.message.includes("jwt expired")) {
+        return {
+          status: 401,
+          message: "Token expired",
+        };
+      }
+
+      return {
+        status: 400,
+        message: "Invalid token",
+      };
+    }
+  };
 }
 
 module.exports = AuthServicesImpl;

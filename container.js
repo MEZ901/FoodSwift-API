@@ -30,6 +30,7 @@ const login = require("./src/application/usecases/auth/login");
 const refreshToken = require("./src/application/usecases/auth/refreshToken");
 const logout = require("./src/application/usecases/auth/logout");
 const verifyEmail = require("./src/application/usecases/auth/verifyEmail");
+const sendResetPasswordEmail = require("./src/application/usecases/auth/sendResetPasswordEmail");
 
 // Validation schemas
 const registerSchema = require("./src/validations/auth/registerSchema");
@@ -65,6 +66,7 @@ const authController = new AuthControllerImpl({
     refreshToken,
     logout,
     verifyEmail,
+    sendResetPasswordEmail,
   },
   schemas: {
     registerSchema,

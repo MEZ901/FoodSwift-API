@@ -23,6 +23,24 @@ class EmailServicesImpl extends EmailServicesInterface {
 
     return true;
   };
+
+  createResetPasswordEmailTemplate = (token) => {
+    return `
+          <h1>Reset Password</h1>
+          <p>Click this link to reset your password: <a href="http://localhost:8080/api/v1/auth/reset-password?token=${token}">Reset Password</a></p>
+        `;
+  };
+
+  sendResetPasswordEmail = async (email, token) => {
+    const subject = "Reset Password";
+    const body = this.createResetPasswordEmailTemplate(token);
+
+    const emailSent = await this.emailGateway.sendEmail(email, subject, body);
+
+    if (!emailSent) return false;
+
+    return true;
+  };
 }
 
 module.exports = EmailServicesImpl;

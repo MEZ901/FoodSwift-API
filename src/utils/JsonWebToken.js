@@ -7,6 +7,8 @@ class JsonWebToken {
     this.refresh_token_secret = environment.jwt.REFRESH_TOKEN_SECRET;
     this.email_verification_token_secret =
       environment.jwt.EMAIL_VERIFICATION_TOKEN_SECRET;
+    this.reset_password_token_secret =
+      environment.jwt.RESET_PASSWORD_TOKEN_SECRET;
   }
 
   generate = async (payload, secret, exp) => {
