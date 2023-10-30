@@ -9,29 +9,26 @@ class EmailGatewayImpl extends EmailGatewayInterface {
 
   sendEmail = async (to, subject, body) => {
     try {
-        const transporter = nodeMailer.createTransport({
-            home: environment.email.HOST,
-            service: environment.email.SERVICE,
-            port: environment.email.PORT,
-            secure: environment.email.SECURE,
-            auth: {
-                user: environment.email.AUTH.USER,
-                pass: environment.email.AUTH.PASS,
-            },
-        });
+      const transporter = nodeMailer.createTransport({
+        host: environment.email.HOST,
+        port: environment.email.PORT,
+        auth: {
+          user: environment.email.AUTH.USER,
+          pass: environment.email.AUTH.PASS,
+        },
+      });
+      const mailOptions = {
+        from: "foodswift@gmail.com",
+        to,
+        subject,
+        html: body,
+      };
 
-        const mailOptions = {
-            from: environment.email.AUTH.USER,
-            to,
-            subject,
-            html: body,
-        }
+      await transporter.sendMail(mailOptions);
 
-        await transporter.sendMail(mailOptions);
-
-        return true;
+      return true;
     } catch (error) {
-        throw new Error(error);
+      throw new Error(error);
     }
   };
 }

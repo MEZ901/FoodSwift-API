@@ -2,6 +2,7 @@ module.exports = async ({
   userData,
   registerSchema,
   authServices,
+  emailServices,
   userRepository,
 }) => {
   userData.roleNames = ["customer"];
@@ -31,9 +32,21 @@ module.exports = async ({
     };
   }
 
+  const isEmailSent = await emailServices.sendVerificationEmail(
+    createdUser.email,
+    "hhhhhhhhhh"
+  );
+
+  if (!isEmailSent) {
+    return {
+      status: 400,
+      message: "Email could not be sent",
+    };
+  }
+
   return {
     status: 200,
-    message: "User created successfully",
+    message: "User created successfully and verification email sent",
     user: createdUser,
   };
 };

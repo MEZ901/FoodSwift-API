@@ -12,13 +12,13 @@ module.exports = {
     REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET,
   },
   email: {
-      HOST: process.env.EMAIL_HOST,
-      SERVICE: process.env.EMAIL_SERVICE,
-      PORT: Number(process.env.EMAIL_PORT),
-      SECURE: Boolean(process.env.EMAIL_SECURE),
-      AUTH: {
-          USER: process.env.EMAIL_AUTH_USER,
-          PASS: process.env.EMAIL_AUTH_PASS,
-      }
-  }
+    HOST: process.env.EMAIL_HOST,
+    SERVICE: process.env.EMAIL_SERVICE,
+    PORT: Number(process.env.EMAIL_PORT),
+    SECURE: Boolean(process.env.EMAIL_SECURE),
+    AUTH: {
+      USER: process.env.EMAIL_AUTH_USER,
+      PASS: process.env.EMAIL_AUTH_PASS,
+    },
+  },
 };

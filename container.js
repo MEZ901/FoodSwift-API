@@ -9,6 +9,7 @@ const CustomerServices = require("./src/adapters/services/users/CustomerServices
 const DeliveryServices = require("./src/adapters/services/users/DeliveryServices");
 const ManagerServices = require("./src/adapters/services/users/ManagerServices");
 const AuthServicesImpl = require("./src/adapters/services/auth/AuthServicesImpl");
+const EmailServices = require("./src/adapters/services/email/EmailServices");
 
 // Models
 const Role = require("./src/infrastructure/database/mongodb/models/Role");
@@ -19,6 +20,9 @@ const UserToken = require("./src/infrastructure/database/mongodb/models/UserToke
 const UserRepository = require("./src/adapters/repositories/UserRepository");
 const RoleRepository = require("./src/adapters/repositories/RoleRepository");
 const UserTokenRepository = require("./src/adapters/repositories/UserTokenRepository");
+
+// Gateways
+const EmailGatewayImpl = require("./src/adapters/gateways/EmailGatewayImpl");
 
 // Usecases
 const register = require("./src/application/usecases/auth/register");
@@ -39,11 +43,15 @@ const userRepository = new UserRepository(User, Role);
 const roleRepository = new RoleRepository(Role);
 const userTokenRepository = new UserTokenRepository(UserToken);
 
+// gateways instances
+const emailGateway = new EmailGatewayImpl();
+
 // services instances
 const customerServices = new CustomerServices();
 const deliveryServices = new DeliveryServices();
 const managerServices = new ManagerServices();
 const authServices = new AuthServicesImpl(jsonWebToken);
+const emailServices = new EmailServices(emailGateway);
 
 // controllers instances
 const customerController = new CustomerControllerImpl(customerServices);
@@ -62,6 +70,7 @@ const authController = new AuthControllerImpl({
     refreshTokenSchema,
   },
   authServices,
+  emailServices,
   userRepository,
   userTokenRepository,
 });
