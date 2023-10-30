@@ -9,7 +9,7 @@ const CustomerServices = require("./src/adapters/services/users/CustomerServices
 const DeliveryServices = require("./src/adapters/services/users/DeliveryServices");
 const ManagerServices = require("./src/adapters/services/users/ManagerServices");
 const AuthServicesImpl = require("./src/adapters/services/auth/AuthServicesImpl");
-const EmailServices = require("./src/adapters/services/email/EmailServices");
+const EmailServicesImpl = require("./src/adapters/services/email/EmailServicesImpl");
 
 // Models
 const Role = require("./src/infrastructure/database/mongodb/models/Role");
@@ -51,7 +51,7 @@ const customerServices = new CustomerServices();
 const deliveryServices = new DeliveryServices();
 const managerServices = new ManagerServices();
 const authServices = new AuthServicesImpl(jsonWebToken);
-const emailServices = new EmailServices(emailGateway);
+const emailServices = new EmailServicesImpl(emailGateway);
 
 // controllers instances
 const customerController = new CustomerControllerImpl(customerServices);

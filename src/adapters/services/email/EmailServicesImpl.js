@@ -1,4 +1,6 @@
-class EmailServices {
+const EmailServicesInterface = require("../../../application/interfaces/services/email/EmailServicesInterface");
+
+class EmailServicesImpl extends EmailServicesInterface {
   constructor(emailGateway) {
     this.emailGateway = emailGateway;
   }
@@ -22,4 +24,4 @@ class EmailServices {
   };
 }
 
-module.exports = EmailServices;
+module.exports = EmailServicesImpl;
