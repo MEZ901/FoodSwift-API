@@ -67,6 +67,33 @@ class AuthServicesImpl extends AuthServicesInterface {
       "10m"
     );
   };
+
+  verifyEmailToken = async (token) => {
+    const { email_verification_token_secret } = this.jsonWebToken;
+    try {
+      const payload = await this.jsonWebToken.verify(
+        token,
+        email_verification_token_secret
+      );
+
+      return {
+        status: 200,
+        payload,
+      };
+    } catch (error) {
+      if (error.message.includes("jwt expired")) {
+        return {
+          status: 401,
+          message: "Token expired",
+        };
+      }
+
+      return {
+        status: 400,
+        message: "Invalid token",
+      };
+    }
+  };
 }
 
 module.exports = AuthServicesImpl;

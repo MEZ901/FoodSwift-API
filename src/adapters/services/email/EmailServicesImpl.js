@@ -9,7 +9,7 @@ class EmailServicesImpl extends EmailServicesInterface {
   createVerificationEmailTemplate = (token) => {
     return `
           <h1>Email Verification</h1>
-          <p>Click this link to verify your email: <a href="http://localhost:8080/api/v1/verify-email?token=${token}">Verify Email</a></p>
+          <p>Click this link to verify your email: <a href="http://localhost:8080/api/v1/auth/verify-email?token=${token}">Verify Email</a></p>
         `;
   };
 
