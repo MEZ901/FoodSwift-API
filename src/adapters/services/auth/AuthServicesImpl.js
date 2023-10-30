@@ -58,6 +58,15 @@ class AuthServicesImpl extends AuthServicesInterface {
     const { refresh_token_secret } = this.jsonWebToken;
     return await this.jsonWebToken.verify(token, refresh_token_secret);
   };
+
+  generateEmailVerificationToken = async (payload) => {
+    const { email_verification_token_secret } = this.jsonWebToken;
+    return await this.jsonWebToken.generate(
+      payload,
+      email_verification_token_secret,
+      "10m"
+    );
+  };
 }
 
 module.exports = AuthServicesImpl;

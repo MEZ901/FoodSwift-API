@@ -32,9 +32,13 @@ module.exports = async ({
     };
   }
 
+  const verificationToken = await authServices.generateEmailVerificationToken({
+    id: createdUser._id,
+  });
+
   const isEmailSent = await emailServices.sendVerificationEmail(
     createdUser.email,
-    "hhhhhhhhhh"
+    verificationToken
   );
 
   if (!isEmailSent) {

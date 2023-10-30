@@ -44,36 +44,45 @@ class AuthServicesInterface {
    * @param {object} payload - The payload to sign
    * @returns {Promise<string>} - A promise that resolves with the access token
    */
-    generateAccessToken = async (payload) => {
-      throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-    }
+  generateAccessToken = async (payload) => {
+    throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
+  };
 
   /**
    * Generates a refresh token
    * @param {object} payload - The payload to sign
    * @returns {Promise<string>} - A promise that resolves with the refresh token
    */
-    generateRefreshToken = async (payload) => {
-      throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-    }
+  generateRefreshToken = async (payload) => {
+    throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
+  };
 
   /**
    * Verifies the given access token
    * @param {string} token - The access token to verify
    * @returns {Promise<object>} - A promise that resolves with the decoded access token
    */
-    verifyAccessToken = async (token) => {
-      throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-    }
+  verifyAccessToken = async (token) => {
+    throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
+  };
 
   /**
    * Verifies the given refresh token
    * @param {string} token - The refresh token to verify
    * @returns {Promise<object>} - A promise that resolves with the decoded refresh token
    */
-    verifyRefreshToken = async (token) => {
-      throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
-    }
+  verifyRefreshToken = async (token) => {
+    throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
+  };
+
+  /**
+   * Generates an email verification token
+   * @param {object} payload - The payload to sign
+   * @returns {Promise<string>} - A promise that resolves with the email verification token
+   */
+  generateEmailVerificationToken = async (payload) => {
+    throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
+  };
 }
 
 module.exports = AuthServicesInterface;

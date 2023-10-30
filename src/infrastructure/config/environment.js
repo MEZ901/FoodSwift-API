@@ -10,6 +10,8 @@ module.exports = {
   jwt: {
     ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET,
     REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET,
+    EMAIL_VERIFICATION_TOKEN_SECRET:
+      process.env.EMAIL_VERIFICATION_TOKEN_SECRET,
   },
   email: {
     HOST: process.env.EMAIL_HOST,

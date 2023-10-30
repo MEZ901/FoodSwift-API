@@ -2,6 +2,7 @@ const EmailServicesInterface = require("../../../application/interfaces/services
 
 class EmailServicesImpl extends EmailServicesInterface {
   constructor(emailGateway) {
+    super();
     this.emailGateway = emailGateway;
   }
 
