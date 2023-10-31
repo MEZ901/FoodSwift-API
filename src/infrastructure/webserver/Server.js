@@ -1,5 +1,6 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 class Server {
   constructor(PORT, routes, middlewares, errMiddlewares) {
@@ -13,6 +14,13 @@ class Server {
   configure = () => {
     this.app.use(cookieParser());
     this.app.use(express.json());
+
+    this.app.use(
+      cors({
+        origin: "http://localhost:3000",
+        credentials: true,
+      })
+    );
 
     this.middlewares.forEach((middleware) => {
       this.app.use(middleware);
