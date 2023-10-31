@@ -31,11 +31,13 @@ const refreshToken = require("./src/application/usecases/auth/refreshToken");
 const logout = require("./src/application/usecases/auth/logout");
 const verifyEmail = require("./src/application/usecases/auth/verifyEmail");
 const sendResetPasswordEmail = require("./src/application/usecases/auth/sendResetPasswordEmail");
+const resetPassword = require("./src/application/usecases/auth/resetPassword");
 
 // Validation schemas
 const registerSchema = require("./src/validations/auth/registerSchema");
 const loginSchema = require("./src/validations/auth/loginSchema");
 const refreshTokenSchema = require("./src/validations/auth/refreshTokenSchema");
+const resetPasswordSchema = require("./src/validations/auth/resetPasswordSchema");
 
 // JsonWebToken
 const jsonWebToken = require("./src/utils/JsonWebToken");
@@ -67,11 +69,13 @@ const authController = new AuthControllerImpl({
     logout,
     verifyEmail,
     sendResetPasswordEmail,
+    resetPassword,
   },
   schemas: {
     registerSchema,
     loginSchema,
     refreshTokenSchema,
+    resetPasswordSchema,
   },
   authServices,
   emailServices,

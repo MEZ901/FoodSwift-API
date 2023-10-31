@@ -91,6 +91,21 @@ class AuthControllerImpl extends AuthControllerInterface {
 
     res.status(status).json({ ...rest });
   };
+
+  resetPassword = async (req, res) => {
+    const { token } = req.query;
+    const { newPassword } = req.body;
+
+    const { status, ...rest } = await this.usecases.resetPassword({
+      token,
+      newPassword,
+      resetPasswordSchema: this.schemas.resetPasswordSchema,
+      authServices: this.authServices,
+      userRepository: this.userRepository,
+    });
+
+    res.status(status).json({ ...rest });
+  };
 }
 
 module.exports = AuthControllerImpl;

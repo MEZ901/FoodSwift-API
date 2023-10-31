@@ -11,6 +11,7 @@ authRouter.post(
   "/send-reset-password-email",
   authController.sendResetPasswordEmail
 );
+authRouter.post("/reset-password", authController.resetPassword);
 authRouter.post("/logout", authController.logout);
 
 module.exports = authRouter;
