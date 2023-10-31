@@ -47,17 +47,17 @@ module.exports = async ({
   }
 
   const accessToken = await authServices.generateAccessToken({
-    id: user._id,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    email: user.email,
-    roles: user.roles.map((role) => role.name),
-    isVerified: user.isVerified,
-    isBanned: user.isBanned,
+    id: createdUser._id,
+    firstName: createdUser.firstName,
+    lastName: createdUser.lastName,
+    email: createdUser.email,
+    roles: createdUser.roles.map((role) => role.name),
+    isVerified: createdUser.isVerified,
+    isBanned: createdUser.isBanned,
   });
 
   const refreshToken = await authServices.generateRefreshToken({
-    id: user._id,
+    id: createdUser._id,
   });
 
   const userToken = await userTokenRepository.find({ userId: user._id });
@@ -81,6 +81,9 @@ module.exports = async ({
       firstName: createdUser.firstName,
       lastName: createdUser.lastName,
       email: createdUser.email,
+      image: createdUser.image,
+      address: createdUser.address,
+      phoneNumber: createdUser.phoneNumber,
       roles: createdUser.roles.map((role) => role.name),
     },
     jwt: {

@@ -46,13 +46,18 @@ class AuthControllerImpl extends AuthControllerInterface {
   };
 
   logout = async (req, res) => {
-    const { refreshToken } = req.body;
+    const { refresh_token } = req.cookies;
+
     const { status, ...rest } = await this.usecases.logout({
-      refreshToken: refreshToken,
+      refreshToken: refresh_token,
       refreshTokenSchema: this.schemas.refreshTokenSchema,
       authServices: this.authServices,
       userTokenRepository: this.userTokenRepository,
     });
+
+    res.clearCookie("access_token");
+    res.clearCookie("refresh_token");
+
     res.status(status).json({ ...rest });
   };
 
