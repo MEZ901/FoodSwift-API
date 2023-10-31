@@ -12,13 +12,18 @@ class AuthControllerImpl extends AuthControllerInterface {
   }
 
   register = async (req, res) => {
-    const { status, ...rest } = await this.usecases.register({
+    const { status, jwt, ...rest } = await this.usecases.register({
       userData: { ...req.body },
       registerSchema: this.schemas.registerSchema,
       authServices: this.authServices,
       emailServices: this.emailServices,
       userRepository: this.userRepository,
     });
+
+    if (jwt) {
+      res.cookie("access_token", jwt.accessToken, { httpOnly: true });
+      res.cookie("refresh_token", jwt.refreshToken, { httpOnly: true });
+    }
 
     res.status(status).json({ ...rest });
   };

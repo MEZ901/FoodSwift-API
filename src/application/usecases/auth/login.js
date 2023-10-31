@@ -11,7 +11,7 @@ module.exports = async ({
   const user = await userRepository.findByEmail(userData.email);
   if (!user) {
     return {
-      status: 400,
+      status: 404,
       validationError: {
         field: "email",
         message: "Email does not exist",
@@ -25,7 +25,7 @@ module.exports = async ({
   );
   if (!isPasswordValid) {
     return {
-      status: 400,
+      status: 401,
       validationError: {
         field: "password",
         message: "Password is incorrect",
@@ -63,6 +63,16 @@ module.exports = async ({
   return {
     status: 200,
     message: "User logged in successfully",
+    user: {
+      id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      image: user.image,
+      address: user.address,
+      phoneNumber: user.phoneNumber,
+      roles: user.roles.map((role) => role.name),
+    },
     jwt: {
       accessToken,
       refreshToken,
