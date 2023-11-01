@@ -82,11 +82,15 @@ class AuthControllerImpl extends AuthControllerInterface {
   verifyEmail = async (req, res) => {
     const { token } = req.query;
 
-    const { status, ...rest } = await this.usecases.verifyEmail({
+    const { status, accessToken, ...rest } = await this.usecases.verifyEmail({
       token,
       authServices: this.authServices,
       userRepository: this.userRepository,
     });
+
+    if (accessToken) {
+      res.cookie("access_token", accessToken, { httpOnly: true });
+    }
 
     res.status(status).json({ ...rest });
   };

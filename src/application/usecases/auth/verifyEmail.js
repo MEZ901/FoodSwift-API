@@ -25,9 +25,20 @@ module.exports = async ({ token, authServices, userRepository }) => {
 
   const verifiedUser = await userRepository.update(id, { isVerified: true });
 
+  const accessToken = await authServices.generateAccessToken({
+    id: verifiedUser._id,
+    firstName: verifiedUser.firstName,
+    lastName: verifiedUser.lastName,
+    email: verifiedUser.email,
+    roles: verifiedUser.roles.map((role) => role.name),
+    isVerified: verifiedUser.isVerified,
+    isBanned: verifiedUser.isBanned,
+  });
+
   return {
     status: 200,
     message: "Email verified successfully",
     user: verifiedUser,
+    accessToken,
   };
 };
