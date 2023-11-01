@@ -1,13 +1,17 @@
 const CustomerControllerInterface = require("../../../application/interfaces/controllers/users/CustomerControllerInterface");
 
 class CustomerControllerImpl extends CustomerControllerInterface {
-  constructor(customerServices) {
+  constructor(options) {
     super();
-    this.customerServices = customerServices;
+    this.customerServices = options.customerServices;
+    this.usecases = options.usecases;
   }
 
   profile = async (req, res) => {
-    return res.status(200).json({ message: "Hi customer" });
+    const { status, ...rest } = await this.usecases.customerProfile({
+      user: req.user,
+    });
+    return res.status(status).json({ ...rest });
   };
 
   seed = async (req, res) => {

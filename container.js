@@ -32,6 +32,9 @@ const logout = require("./src/application/usecases/auth/logout");
 const verifyEmail = require("./src/application/usecases/auth/verifyEmail");
 const sendResetPasswordEmail = require("./src/application/usecases/auth/sendResetPasswordEmail");
 const resetPassword = require("./src/application/usecases/auth/resetPassword");
+const customerProfile = require("./src/application/usecases/customer/getCustomerProfile");
+const deliveryProfile = require("./src/application/usecases/delivery/getDeliveryProfile");
+const managerProfile = require("./src/application/usecases/manager/getManagerProfile");
 
 // Validation schemas
 const registerSchema = require("./src/validations/auth/registerSchema");
@@ -58,9 +61,18 @@ const authServices = new AuthServicesImpl(jsonWebToken);
 const emailServices = new EmailServicesImpl(emailGateway);
 
 // controllers instances
-const customerController = new CustomerControllerImpl(customerServices);
-const deliveryController = new DeliveryControllerImpl(deliveryServices);
-const managerController = new ManagerControllerImpl(managerServices);
+const customerController = new CustomerControllerImpl({
+  usecases: { customerProfile },
+  customerServices,
+});
+const deliveryController = new DeliveryControllerImpl({
+  usecases: { deliveryProfile },
+  deliveryServices,
+});
+const managerController = new ManagerControllerImpl({
+  usecases: { managerProfile },
+  managerServices,
+});
 const authController = new AuthControllerImpl({
   usecases: {
     register,

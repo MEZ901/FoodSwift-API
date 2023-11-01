@@ -1,13 +1,17 @@
 const DeliveryControllerInterface = require("../../../application/interfaces/controllers/users/DeliveryControllerInterface");
 
 class DeliveryControllerImpl extends DeliveryControllerInterface {
-  constructor(deliveryServices) {
+  constructor(options) {
     super();
-    this.deliveryServices = deliveryServices;
+    this.deliveryServices = options.deliveryServices;
+    this.usecases = options.usecases;
   }
 
   profile = async (req, res) => {
-    return res.status(200).json({ message: "Hi delivery" });
+    const { status, ...rest } = await this.usecases.deliveryProfile({
+      user: req.user,
+    });
+    return res.status(status).json({ ...rest });
   };
 
   seed = async (req, res) => {

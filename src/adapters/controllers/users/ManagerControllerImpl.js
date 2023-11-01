@@ -1,13 +1,17 @@
 const ManagerControllerInterface = require("../../../application/interfaces/controllers/users/ManagerControllerInterface");
 
 class ManagerControllerImpl extends ManagerControllerInterface {
-  constructor(managerServices) {
+  constructor(options) {
     super();
-    this.managerServices = managerServices;
+    this.managerServices = options.managerServices;
+    this.usecases = options.usecases;
   }
 
   profile = async (req, res) => {
-    return res.status(200).json({ message: "Hi manager" });
+    const { status, ...rest } = await this.usecases.managerProfile({
+      user: req.user,
+    });
+    return res.status(status).json({ ...rest });
   };
 
   seed = async (req, res) => {
