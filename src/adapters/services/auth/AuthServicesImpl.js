@@ -51,12 +51,54 @@ class AuthServicesImpl extends AuthServicesInterface {
 
   verifyAccessToken = async (token) => {
     const { access_token_secret } = this.jsonWebToken;
-    return await this.jsonWebToken.verify(token, access_token_secret);
+
+    try {
+      const payload = await this.jsonWebToken.verify(
+        token,
+        access_token_secret
+      );
+
+      return {
+        status: 200,
+        payload,
+      };
+    } catch (error) {
+      if (error.message.includes("jwt expired")) {
+        return {
+          status: 403,
+          message: "Access Denied: Token expired",
+        };
+      }
+
+      return {
+        status: 401,
+        message: "Access Denied: Invalid token",
+      };
+    }
   };
 
   verifyRefreshToken = async (token) => {
     const { refresh_token_secret } = this.jsonWebToken;
-    return await this.jsonWebToken.verify(token, refresh_token_secret);
+    try {
+      const payload = await this.jsonWebToken.verify(
+        token,
+        refresh_token_secret
+      );
+
+      return {
+        status: 200,
+        payload,
+      };
+    } catch (error) {
+      return {
+        status: 401,
+        message: `Access Denied: ${
+          error.message.includes("jwt expired")
+            ? "Token expired"
+            : "Invalid token"
+        } `,
+      };
+    }
   };
 
   generateEmailVerificationToken = async (payload) => {

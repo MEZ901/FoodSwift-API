@@ -7,19 +7,16 @@ const authMiddleware = async (req, res, next) => {
     res.status(401).json({ error: "Access Denied: No Token Provided" });
   }
 
-  try {
-    const decodedAccessToken = await authServices.verifyAccessToken(
-      access_token
-    );
-    if (decodedAccessToken) {
-      req.user = decodedAccessToken;
-      return next();
-    }
-  } catch (error) {
-    return res
-      .status(401)
-      .json({ message: "Access Denied: Invalid access token." });
+  const { status, ...rest } = await authServices.verifyAccessToken(
+    access_token
+  );
+
+  if (status !== 200) {
+    res.status(status).json({ ...rest });
   }
+
+  req.user = { ...rest.payload };
+  return next();
 };
 
 module.exports = authMiddleware;

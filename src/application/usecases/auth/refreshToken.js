@@ -16,7 +16,7 @@ module.exports = async ({
   });
   if (userToken.length === 0) {
     return {
-      status: 400,
+      status: 404,
       validationError: {
         field: "refreshToken",
         message: "Refresh token does not exist",
@@ -24,9 +24,18 @@ module.exports = async ({
     };
   }
 
-  const decodedToken = await authServices.verifyRefreshToken(refreshToken);
+  const { status, ...rest } = await authServices.verifyRefreshToken(
+    refreshToken
+  );
 
-  const user = await userRepository.findById(decodedToken.id);
+  if (status !== 200) {
+    return {
+      status,
+      ...rest,
+    };
+  }
+
+  const user = await userRepository.findById(rest.payload.id);
   if (!user) {
     return {
       status: 400,
