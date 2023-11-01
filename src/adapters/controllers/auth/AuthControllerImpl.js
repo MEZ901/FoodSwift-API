@@ -18,6 +18,7 @@ class AuthControllerImpl extends AuthControllerInterface {
       authServices: this.authServices,
       emailServices: this.emailServices,
       userRepository: this.userRepository,
+      userTokenRepository: this.userTokenRepository,
     });
 
     if (jwt) {

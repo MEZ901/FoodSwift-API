@@ -60,7 +60,7 @@ module.exports = async ({
     id: createdUser._id,
   });
 
-  const userToken = await userTokenRepository.find({ userId: user._id });
+  const userToken = await userTokenRepository.find({ userId: createdUser._id });
   if (userToken.length > 0) {
     await userTokenRepository.update(userToken[0]._id, {
       refreshToken,
@@ -68,7 +68,7 @@ module.exports = async ({
     });
   } else {
     await userTokenRepository.create({
-      userId: user._id,
+      userId: createdUser._id,
       refreshToken,
     });
   }
