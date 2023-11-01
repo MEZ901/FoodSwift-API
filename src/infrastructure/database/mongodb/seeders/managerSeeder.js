@@ -7,7 +7,7 @@ module.exports = async () => {
       firstName: "Admin",
       lastName: "Admin",
       email: "admin@admin.com",
-      password: await authServices.hashPassword("admin"),
+      password: await authServices.hashPassword("adminadmin"),
       roleNames: ["customer", "delivery", "manager"],
       isVerified: true,
     };

@@ -1,4 +1,4 @@
-const errorMiddleware = require("./ErrorMiddleware");
+const errorMiddleware = require("./errorMiddleware");
 const notFoundMiddleware = require("./notFoundMiddleware");
 
 const middlewares = [];
